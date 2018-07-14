@@ -28,13 +28,13 @@ module Fcoin
       end
     end
 
-    private
-
     def set_default
       self.adapter  = DEFAULT_ADAPTER
       self.token    = DEFAULT_TOKEN
       self.endpoint = DEFAULT_ENDPOINT
     end
+
+    private
 
     attr_accessor *VALID_OPTIONS_KEYS
   end

@@ -1,6 +1,7 @@
 require "fcoin/version"
 require "fcoin/configuration"
+require "fcoin/client"
 
 module Fcoin
-  # Your code goes here...
+  extend Configuration
 end
