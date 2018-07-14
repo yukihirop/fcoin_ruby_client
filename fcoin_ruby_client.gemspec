@@ -5,7 +5,7 @@ require "fcoin/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "fcoin_ruby_client"
-  spec.version       = FcoinRubyClient::VERSION
+  spec.version       = Fcoin::VERSION
   spec.authors       = ["yukihirop"]
   spec.email         = ["te108186@gmail.com"]
 
@@ -32,6 +32,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "webmock"
+  spec.add_development_dependency "vcr"
 
   spec.add_runtime_dependency "faraday"
   spec.add_runtime_dependency "faraday_middleware"
