@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "fcoin_ruby_client"
+require "fcoin"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

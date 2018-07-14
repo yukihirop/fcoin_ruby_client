@@ -1,5 +1,5 @@
-require "fcoin_ruby_client/version"
+require "fcoin/version"
 
-module FcoinRubyClient
+module Fcoin
   # Your code goes here...
 end
