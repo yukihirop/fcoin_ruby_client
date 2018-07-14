@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/public/currencies?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 09:55:48 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: UTF-8
+      string: '{"status":0,"data":["btc","eth","bch","ltc","usdt","ft_frozen","ft","zip","etc","omg","btm","zrx","xrp","bnb","gtc","fi","zil","icx","ae","777","gus","cccx","banca","pra","dcc","sss","mdt","tst","pmd","rte","xps","tct","dws","ngot","at","soc","blz","ocn","datx","let","dag","yee","aaa","nc","ait","arp","gram","tbcoin","ifood","hpc","sgcc","lxt","3db","drink","drct","ionc","xmx","rct","cit","ees","fair","brm","sda","cbr","tkt","vct","biz","show","pai","sec","lovc","mst","iov","ejoy","iht","iic","fbc","fota","dagt","wte","tos","oas","fres","gene","maya","mesh","icc","scl","cofi","but","zsc","jac","vns","aidoc","ccc","fuel","edu","beauty","mof","dta","cps","msc","latx","dscoin","dscb","boc","18t","newos","mxm","idxe","pnt","vpp","lmm"]}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 09:55:48 GMT
+recorded_with: VCR 4.0.0
