@@ -1,8 +1,10 @@
 require_relative 'connection'
+require_relative 'request'
 
 module Fcoin
   class API
     include Connection
+    include Request
 
     def initialize(options={})
       options = Fcoin.options.merge(options)
