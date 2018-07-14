@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/depth/L20/fteth?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 12:19:17 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"data":{"bids":[0.000577640,5.000000000,0.000577630,1952.350000000,0.000577540,55.000000000,0.000577450,3.500000000,0.000577340,70.000000000,0.000577250,3.900000000,0.000577240,12.370000000,0.000577040,3.270000000,0.000577030,23.380000000,0.000577010,3.050000000,0.000577000,1362.350000000,0.000576950,977.660000000,0.000576910,500.000000000,0.000576710,3.360000000,0.000576700,3.860000000,0.000576690,7592.700000000,0.000576570,1000.000000000,0.000576500,2485.640000000,0.000576490,159.580000000,0.000576480,3.090000000],"asks":[0.000577650,1558.975699600,0.000578000,432.820000000,0.000578010,3.700000000,0.000578020,4.640000000,0.000578030,3.910000000,0.000578190,23.370000000,0.000578310,3.670000000,0.000578320,3.740000000,0.000578380,155.570000000,0.000578770,130.000000000,0.000578810,158.940000000,0.000578910,3.700000000,0.000578920,130.000000000,0.000579010,13.580000000,0.000579030,130.000000000,0.000579090,420.000000000,0.000579230,600.000000000,0.000579270,973.740000000,0.000579350,23.290000000,0.000579390,23.260000000],"ts":1531570757013,"seq":17440636,"type":"depth.L20.fteth"}}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 12:19:17 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/depth/invalid_level/fteth?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 12:35:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":40003,"msg":"invalid depth-level"}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 12:35:55 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/trades/fteth?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 12:54:54 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"data":[{"amount":153.144886000,"ts":1531572894660,"id":17449239002,"side":"buy","price":0.000576890}]}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 12:54:54 GMT
+recorded_with: VCR 4.0.0

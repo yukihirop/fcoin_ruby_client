@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/ticker?symbol=ethbtc&token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 11:16:22 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":404,"msg":"Page NOT found"}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 11:16:22 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/ticker/ethbtc?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 11:49:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":40003,"msg":"invalid symbol"}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 11:49:45 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/ticker/fteth?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 11:59:33 GMT
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":0,"data":{"ticker":[0.000583210,701.680000000,0.000582760,3.900000000,0.000582980,5.000000000,0.000573350,0.000647890,0.000532800,218874435.209302596,125152.766301293171344420],"type":"ticker.fteth","seq":17433962}}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 11:59:33 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/ticker/ftft?token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 14 Jul 2018 12:07:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":40003,"msg":"invalid symbol"}'
+    http_version: 
+  recorded_at: Sat, 14 Jul 2018 12:07:08 GMT
+recorded_with: VCR 4.0.0
