@@ -1,5 +1,5 @@
 require "fcoin/version"
-require "fcoin/configration"
+require "fcoin/configuration"
 
 module Fcoin
   # Your code goes here...

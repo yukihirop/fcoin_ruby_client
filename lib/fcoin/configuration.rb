@@ -39,7 +39,3 @@ module Fcoin
     attr_accessor *VALID_OPTIONS_KEYS
   end
 end
-
-module Fcoin
-  extend Configuration
-end
