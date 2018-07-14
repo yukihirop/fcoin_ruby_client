@@ -1,6 +1,7 @@
 require_relative 'connection'
 require_relative 'request'
 require_relative 'endpoint'
+require_relative 'error'
 require 'active_support'
 require 'active_support/core_ext'
 
