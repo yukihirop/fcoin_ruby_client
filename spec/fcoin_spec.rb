@@ -1,9 +1,5 @@
-RSpec.describe FcoinRubyClient do
+RSpec.describe Fcoin do
   it "has a version number" do
-    expect(FcoinRubyClient::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(Fcoin::VERSION).not_to be "0.1.0"
   end
 end
