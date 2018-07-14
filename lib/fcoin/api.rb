@@ -1,6 +1,8 @@
 require_relative 'connection'
 require_relative 'request'
 require_relative 'endpoint'
+require 'active_support'
+require 'active_support/core_ext'
 
 module Fcoin
   class API
