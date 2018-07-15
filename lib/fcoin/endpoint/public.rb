@@ -5,17 +5,17 @@ module Fcoin
     module Public
       # GET https://api.fcoin.com/v2/public/server-time
       def public_server_time
-        get('public/server-time')
+        get('public/server-time', false)
       end
 
       # GET https://api.fcoin.com/v2/public/currencies
       def public_currencies
-        get('public/currencies')
+        get('public/currencies', false)
       end
 
       # GET https://api.fcoin.com/v2/public/symbols
       def public_symbols
-        get('public/symbols')
+        get('public/symbols', false)
       end
     end
   end
