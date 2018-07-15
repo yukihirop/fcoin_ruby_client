@@ -4,7 +4,6 @@ module Fcoin
   module Configuration
 
     DEFAULT_ADAPTER     = ::Faraday.default_adapter
-    DEFAULT_TOKEN       = nil
     DEFAULT_ENDPOINT    = 'https://api.fcoin.com/v2/'
     DEFAULT_USER_AGENT  = "Fcoin Ruby Gem #{Fcoin::VERSION}".freeze
     DEFAULT_PROXY       = nil
@@ -15,7 +14,6 @@ module Fcoin
 
     VALID_OPTIONS_KEYS = [
       :adapter,
-      :token,
       :endpoint,
       :user_agent,
       :proxy,
@@ -40,7 +38,6 @@ module Fcoin
 
     def set_default
       self.adapter     = DEFAULT_ADAPTER
-      self.token       = DEFAULT_TOKEN
       self.endpoint    = DEFAULT_ENDPOINT
       self.user_agent  = DEFAULT_USER_AGENT
       self.proxy       = DEFAULT_PROXY
