@@ -1,32 +1,46 @@
+require_relative 'authorization'
+
 # Scope Fcoin::API
 module Fcoin
   module Request
-    def get(path, options={})
-      request(:get, path, options)
+    def get(path, payload={})
+      request(:get, path, payload)
     end
 
-    def post(path, options={})
-      request(:post, path, options)
+    def post(path, payload={})
+      request(:post, path, payload)
     end
 
-    def put(path, options={})
-      request(:put, path, options)
+    def put(path, payload={})
+      request(:put, path, payload)
     end
 
-    def delete(path, options={})
-      request(:delete, path, options)
+    def delete(path, payload={})
+      request(:delete, path, payload)
     end
 
     private
 
-    def request(method, path, options)
-      response = connection.send(method) do |request|
-        case method
+    def request(http_method, path, payload)
+      response = connection.send(http_method) do |request|
+        required = {
+          http_method: http_method,
+          path:        path,
+          payload:     payload,
+          endpoint:    endpoint,
+          api_key:     api_key,
+          secret_key:  secret_key
+        }
+        
+        auth = Fcoin::Authorization.new(required)
+        request.headers.merge!(auth.original_headers)
+
+        case http_method
         when :get, :delete
-          request.url(path, options)
+          request.url(path, payload)
         when :post, :put
           request.path = path
-          request.body = options unless options.empty?
+          request.body = payload unless payload.empty?
         end
       end
       return response

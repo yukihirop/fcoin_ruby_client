@@ -14,6 +14,8 @@ RSpec.describe Fcoin::Configuration do
         :adapter     => :net_http,
         :endpoint    => 'https://api.fcoin.com/v2/',
         :user_agent  => "Fcoin Ruby Gem #{Fcoin::VERSION}",
+        :api_key     => 'Fcoin API Public Key',
+        :secret_key  => 'Fcoin API Secret Key',
         :proxy       => nil,
         :ca_path     => '/private/etc/ssl',
         :ca_file     => '/private/etc/ssl/ca-certificates.crt',

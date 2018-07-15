@@ -11,16 +11,22 @@ module Fcoin
     DEFAULT_CA_PATH     = %x[ openssl version -a | grep OPENSSLDIR | awk '{print $2}'|sed -e 's/\"//g' ].chomp
     DEFAULT_CA_FILE     = "#{DEFAULT_CA_PATH}/ca-certificates.crt"
     DEFAULT_MIDDLEWARES = []
+    DEFAULT_API_KEY     = 'Fcoin API Public Key'
+    DEFAULT_SECRET_KEY  = 'Fcoin API Secret Key'
 
     VALID_OPTIONS_KEYS = [
       :adapter,
       :endpoint,
       :user_agent,
+      :api_key,
+      :secret_key,
       :proxy,
       :ca_path,
       :ca_file,
       :middlewares
     ].freeze
+
+    attr_accessor *VALID_OPTIONS_KEYS
 
     def self.extended(base)
       base.set_default
@@ -40,14 +46,12 @@ module Fcoin
       self.adapter     = DEFAULT_ADAPTER
       self.endpoint    = DEFAULT_ENDPOINT
       self.user_agent  = DEFAULT_USER_AGENT
+      self.api_key     = DEFAULT_API_KEY
+      self.secret_key  = DEFAULT_SECRET_KEY
       self.proxy       = DEFAULT_PROXY
       self.ca_path     = DEFAULT_CA_PATH
       self.ca_file     = DEFAULT_CA_FILE
       self.middlewares = DEFAULT_MIDDLEWARES
     end
-
-    private
-
-    attr_accessor *VALID_OPTIONS_KEYS
   end
 end
