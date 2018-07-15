@@ -13,7 +13,7 @@ RSpec.describe Fcoin::Configuration do
       {
         :adapter     => :net_http,
         :token       => nil,
-        :endpoint    => 'https://api.fcoin.com/v2',
+        :endpoint    => 'https://api.fcoin.com/v2/',
         :user_agent  => "Fcoin Ruby Gem #{Fcoin::VERSION}",
         :proxy       => nil,
         :ca_path     => '/private/etc/ssl',
