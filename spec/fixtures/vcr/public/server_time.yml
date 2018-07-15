@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/public/server-time?token
+    uri: https://api.fcoin.com/v2/public/server-time
     body:
       encoding: US-ASCII
       string: ''

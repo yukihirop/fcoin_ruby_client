@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/market/trades/fteth?token
+    uri: https://api.fcoin.com/v2/market/trades/fteth
     body:
       encoding: US-ASCII
       string: ''
@@ -33,7 +33,7 @@ http_interactions:
   recorded_at: Sat, 14 Jul 2018 12:55:27 GMT
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/market/trades/ftft?token
+    uri: https://api.fcoin.com/v2/market/trades/ftft
     body:
       encoding: US-ASCII
       string: ''

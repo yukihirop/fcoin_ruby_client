@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/market/depth/L20/fteth?token
+    uri: https://api.fcoin.com/v2/market/depth/L20/fteth
     body:
       encoding: US-ASCII
       string: ''
@@ -33,7 +33,7 @@ http_interactions:
   recorded_at: Sat, 14 Jul 2018 12:19:17 GMT
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/market/depth/invalid_level/fteth?token
+    uri: https://api.fcoin.com/v2/market/depth/invalid_level/fteth
     body:
       encoding: US-ASCII
       string: ''
@@ -66,7 +66,7 @@ http_interactions:
   recorded_at: Sat, 14 Jul 2018 12:35:55 GMT
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/market/trades/fteth?token
+    uri: https://api.fcoin.com/v2/market/trades/fteth
     body:
       encoding: US-ASCII
       string: ''

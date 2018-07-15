@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.fcoin.com/v2/public/symbols?token
+    uri: https://api.fcoin.com/v2/public/symbols
     body:
       encoding: US-ASCII
       string: ''
