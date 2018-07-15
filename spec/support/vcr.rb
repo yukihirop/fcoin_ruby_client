@@ -6,4 +6,8 @@ VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
   config.configure_rspec_metadata!
   config.debug_logger = File.open('log/vcr.log', 'w')
+  config.before_record do |interaction|
+    interaction.request.headers['Fc-Access-Key'][0].sub!(/.*+/, '<Fc-Access-Key>')
+    interaction.request.headers['Fc-Access-Signature'][0].sub!(/.*+/, '<Fc-Access-Signature>')
+  end
 end
