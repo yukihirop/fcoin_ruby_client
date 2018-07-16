@@ -5,8 +5,6 @@ require_relative 'utility'
 module Fcoin
   module Endpoint
     module Market
-      include Utility
-      
       # GET https://api.fcoin.com/v2/market/ticker/$symbol
       def market_ticker(symbol:)
         get("market/ticker/#{symbol}", false)
