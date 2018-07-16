@@ -7,7 +7,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     context 'when symbol is missing' do
       subject { client.market_ticker }
       it 'should be raise error' do
-        expect{ subject }.to raise_error(ArgumentError)
+        expect{ subject }.to raise_error(ArgumentError, "missing keyword: symbol")
       end
     end
 
@@ -39,10 +39,10 @@ RSpec.describe Fcoin::Endpoint::Market do
   end
 
   describe '#market_depth', vcr: { cassette_name: 'market/depth', record: :new_episodes } do
-    context 'when symbol or level is missing' do
+    context 'when symbol and level is missing' do
       subject { client.market_depth }
       it 'should be raise error' do
-        expect { subject }.to raise_error(ArgumentError)
+        expect { subject }.to raise_error(ArgumentError, "missing keywords: level, symbol")
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     context 'when symbol is missing' do
       subject { client.market_trades }
       it 'should be raise error' do
-        expect { subject }.to raise_error(ArgumentError)
+        expect { subject }.to raise_error(ArgumentError, "missing keyword: symbol")
       end
     end
 
