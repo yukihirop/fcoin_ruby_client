@@ -7,7 +7,7 @@ module Fcoin
 
     def connection
       options = {
-        :headers => { 'Accept' => 'application/json; charset=utf-8', 'User-Agent' => user_agent },
+        :headers => { 'Accept' => 'application/json; charset=utf-8', 'User-Agent' => user_agent, 'Content-Type' => 'application/json' },
         :proxy => proxy,
         :url => endpoint,
         :ssl => { :ca_path => ca_path, :ca_file => ca_file }
