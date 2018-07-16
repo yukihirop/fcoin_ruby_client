@@ -1,17 +1,15 @@
-
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "fcoin_ruby_client/version"
+require "fcoin/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "fcoin_ruby_client"
-  spec.version       = FcoinRubyClient::VERSION
+  spec.version       = Fcoin::VERSION
   spec.authors       = ["yukihirop"]
   spec.email         = ["te108186@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A Ruby wrapper for Fcoin API}
+  spec.description   = %q{A Ruby wrapper for Fcoin API}
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -32,4 +30,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16.a"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "webmock"
+  spec.add_development_dependency "vcr"
+
+  spec.add_runtime_dependency "faraday"
+  spec.add_runtime_dependency "faraday_middleware"
+  spec.add_runtime_dependency "activesupport"
 end

@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/accounts/balance
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Fc-Access-Key:
+      - Fcoin API Public Key
+      Fc-Access-Signature:
+      - "<Fc-Access-Signature>"
+      Fc-Access-Timestamp:
+      - '1531671231142'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sun, 15 Jul 2018 16:13:51 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: UTF-8
+      string: '{"status":6005,"msg":"api key check fail : {\"status\":1020,\"msg\":\"api
+        key not found : Fcoin API Public Key\"}"}'
+    http_version: 
+  recorded_at: Sun, 15 Jul 2018 16:13:51 GMT
+recorded_with: VCR 4.0.0

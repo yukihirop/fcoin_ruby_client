@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/orders/L7rbALEIoI0ymo3uOXBF4gT4BlyTxgHhGoZjvptIv2U=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Fc-Access-Key:
+      - "<Fc-Access-Key>"
+      Fc-Access-Signature:
+      - "<Fc-Access-Signature>"
+      Fc-Access-Timestamp:
+      - '1531721315011'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Mon, 16 Jul 2018 06:08:35 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: UTF-8
+      string: '{"status":0,"data":{"id":"L7rbALEIoI0ymo3uOXBF4gT4BlyTxgHhGoZjvptIv2U=","symbol":"ethusdt","amount":"0.001000000000000000","price":"1000.000000000000000000","created_at":1531714218130,"type":"limit","side":"sell","filled_amount":"0.000000000000000000","executed_value":"0.000000000000000000","fill_fees":"0.000000000000000000","source":"api","state":"canceled"}}'
+    http_version: 
+  recorded_at: Mon, 16 Jul 2018 06:08:35 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/orders/invalid_order_id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Fc-Access-Key:
+      - "<Fc-Access-Key>"
+      Fc-Access-Signature:
+      - "<Fc-Access-Signature>"
+      Fc-Access-Timestamp:
+      - '1531721744642'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: ''
+    headers:
+      Date:
+      - Mon, 16 Jul 2018 06:15:45 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: UTF-8
+      string: '{"status":1001,"msg":"bad argument: invalid_order_id"}'
+    http_version: 
+  recorded_at: Mon, 16 Jul 2018 06:15:45 GMT
+recorded_with: VCR 4.0.0
