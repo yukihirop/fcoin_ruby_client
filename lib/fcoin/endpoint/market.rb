@@ -1,8 +1,12 @@
+require_relative 'utility'
+
 # @see https://developer.fcoin.com/jp.html?javascript#32c808cbe5
 # Scope Fcoin::API
 module Fcoin
   module Endpoint
     module Market
+      include Utility
+      
       # GET https://api.fcoin.com/v2/market/ticker/$symbol
       def market_ticker(required={})
         required_missing_error(required, :symbol)
@@ -44,12 +48,6 @@ module Fcoin
       end
 
       private
-
-      def required_missing_error(required, *required_keys)
-        required_keys.each do |key|
-          raise ArgumentError.new("Required arguments :#{key.to_s} missing") if required[key].nil?
-        end
-      end
 
       def valid_level?(level)
         valid_levels = %w(L20 L100 full) + %i(L20 L100 full)
