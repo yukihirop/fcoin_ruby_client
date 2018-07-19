@@ -13,6 +13,7 @@ RSpec.describe Fcoin::Configuration do
       {
         :adapter     => :net_http,
         :endpoint    => 'https://api.fcoin.com/v2/',
+        :wss_endpoint => "wss://api.fcoin.com/v2/ws",
         :user_agent  => "Fcoin Ruby Gem #{Fcoin::VERSION}",
         :api_key     => 'Fcoin API Public Key',
         :secret_key  => 'Fcoin API Secret Key',
