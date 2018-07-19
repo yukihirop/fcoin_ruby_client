@@ -11,7 +11,7 @@ module Fcoin
       end
 
       # GET https://api.fcoin.com/v2/market/depth/$level/$symbol
-      def market_depth(level:, symbol:)
+      def market_depth(symbol:, level:)
         if valid_level?(level)
           get("market/depth/#{level}/#{symbol}", false)
         else
@@ -25,7 +25,7 @@ module Fcoin
       end
 
       # GET https://api.fcoin.com/v2/market/candles/$resolution/$symbol
-      def market_candles(resolution:, symbol:)
+      def market_candles(symbol:, resolution:)
         if valid_resolution?(resolution)
           get("market/candles/#{resolution}/#{symbol}", false)
         else

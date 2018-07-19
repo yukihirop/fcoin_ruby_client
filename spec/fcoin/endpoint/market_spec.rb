@@ -42,12 +42,12 @@ RSpec.describe Fcoin::Endpoint::Market do
     context 'when symbol and level is missing' do
       subject { client.market_depth }
       it 'should be raise error' do
-        expect { subject }.to raise_error(ArgumentError, "missing keywords: level, symbol")
+        expect { subject }.to raise_error(ArgumentError, "missing keywords: symbol, level")
       end
     end
 
     context 'when input correct' do
-      let(:response) { client.market_depth(level: :L20, symbol: :fteth) }
+      let(:response) { client.market_depth(symbol: :fteth, level: :L20) }
       let(:body)     { JSON.parse(response.body) }
 
       it 'response data should be got' do
@@ -65,7 +65,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     end
 
     context 'when input incorrect' do
-      subject { client.market_depth(level: :invalid_level, symbol: :fteth) }
+      subject { client.market_depth(symbol: :fteth, level: :invalid_level) }
 
       it 'should be raise error' do
         expect { subject }.to raise_error(Fcoin::InvalidValueError, "Invalid value level: invalid_level.\nPlease input L20, L100 or full.")
@@ -115,12 +115,12 @@ RSpec.describe Fcoin::Endpoint::Market do
     context 'when resolution is missing' do
       subject { client.market_candles }
       it 'should be raise error' do
-        expect { subject }.to raise_error(ArgumentError)
+        expect { subject }.to raise_error(ArgumentError, "missing keywords: symbol, resolution")
       end
     end
 
     context 'when input correct' do
-      let(:response)   { client.market_candles(resolution: :MN, symbol: :fteth) }
+      let(:response)   { client.market_candles(symbol: :fteth, resolution: :MN) }
       let(:body)       { JSON.parse(response.body) }
       let(:first_data) { body['data'].first }
 
