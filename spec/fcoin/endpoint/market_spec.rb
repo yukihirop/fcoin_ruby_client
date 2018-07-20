@@ -12,8 +12,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     end
 
     context 'when input correct' do
-      let(:response) { client.market_ticker(symbol: :fteth) }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.market_ticker(symbol: :fteth) }
       
       it 'response data should be got' do
         expect(body['data']['ticker']).to eq [0.00058321, 701.68, 0.00058276, 3.9, 0.00058298, 5.0, 0.00057335, 0.00064789, 0.0005328, 218874435.2093026, 125152.76630129317]
@@ -21,15 +20,10 @@ RSpec.describe Fcoin::Endpoint::Market do
         expect(body['data']['seq']).to    eq 17433962
         expect(body['status']).to         eq 0
       end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when input incorrect' do
-      let(:response) { client.market_ticker(symbol: :ftft) }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.market_ticker(symbol: :ftft) }
 
       it 'should be return error' do
         expect(body['msg']).to    eq 'invalid symbol'
@@ -47,8 +41,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     end
 
     context 'when input correct' do
-      let(:response) { client.market_depth(symbol: :fteth, level: :L20) }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.market_depth(symbol: :fteth, level: :L20) }
 
       it 'response data should be got' do
         expect(body['data']['bids']).to eq [0.000577640,5.000000000,0.000577630,1952.350000000,0.000577540,55.000000000,0.000577450,3.500000000,0.000577340,70.000000000,0.000577250,3.900000000,0.000577240,12.370000000,0.000577040,3.270000000,0.000577030,23.380000000,0.000577010,3.050000000,0.000577000,1362.350000000,0.000576950,977.660000000,0.000576910,500.000000000,0.000576710,3.360000000,0.000576700,3.860000000,0.000576690,7592.700000000,0.000576570,1000.000000000,0.000576500,2485.640000000,0.000576490,159.580000000,0.000576480,3.090000000]
@@ -57,10 +50,6 @@ RSpec.describe Fcoin::Endpoint::Market do
         expect(body['data']['seq']).to  eq 17440636
         expect(body['data']['type']).to eq 'depth.L20.fteth'
         expect(body['status']).to       eq 0
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
       end
     end
 
@@ -82,8 +71,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     end
 
     context 'when input correct' do
-      let(:response)    { client.market_trades(symbol: :fteth) }
-      let(:body)        { JSON.parse(response.body) }
+      let(:body)    { client.market_trades(symbol: :fteth) }
       let(:first_data)  { body['data'].first }
 
       it 'response data should be got' do
@@ -94,15 +82,10 @@ RSpec.describe Fcoin::Endpoint::Market do
         expect(first_data['price']).to  eq 0.00057727
         expect(body['status']).to       eq 0
       end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when input incorrect' do
-      let(:response) { client.market_trades(symbol: :ftft) }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.market_trades(symbol: :ftft) }
 
       it 'should be return error' do
         expect(body['msg']).to    eq 'invalid symbol'
@@ -120,8 +103,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     end
 
     context 'when input correct' do
-      let(:response)   { client.market_candles(symbol: :fteth, resolution: :MN) }
-      let(:body)       { JSON.parse(response.body) }
+      let(:body)   { client.market_candles(symbol: :fteth, resolution: :MN) }
       let(:first_data) { body['data'].first }
 
       it 'response data should be got' do
@@ -135,10 +117,6 @@ RSpec.describe Fcoin::Endpoint::Market do
         expect(first_data['seq']).to       eq 1749385600000
         expect(first_data['base_vol']).to  eq 1394688128.6132514
         expect(body['status']).to          eq 0
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
       end
     end
 
