@@ -45,7 +45,7 @@ module Fcoin
           request.body = payload unless payload.empty?
         end
       end
-      return response
+      return JSON.load(response.body)
     end
   end
 end
