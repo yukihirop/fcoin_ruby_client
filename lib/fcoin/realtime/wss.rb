@@ -1,5 +1,6 @@
 require 'faye/websocket'
 require 'eventmachine'
+require_relative 'formatter'
 
 # Scope Fcoin::RealTime::API
 module Fcoin
@@ -24,7 +25,8 @@ module Fcoin
           wss.on(:message) do |event|
             data       = JSON.parse(event.data)
             event_name = data["type"]
-            call_callbacks(event_name, data)
+            formatter  = Fcoin::RealTime::Formatter.build(data)
+            call_callbacks(event_name, formatter.formatted_data)
           end
 
           wss.on(:close) do |event|
