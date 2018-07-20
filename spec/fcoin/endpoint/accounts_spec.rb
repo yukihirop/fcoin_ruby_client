@@ -4,8 +4,7 @@ RSpec.describe Fcoin::Endpoint::Accounts do
   let(:client) { Fcoin::Client.new }
   
   describe '#accounts_balance' do
-    let(:response) { client.accounts_balance }
-    let(:body)     { JSON.parse(response.body) }
+    let(:body) { client.accounts_balance }
 
     context 'when client is authorized', fcoin_auth: true, vcr: { cassette_name: 'accounts/balance_auth', record: :new_episodes } do
       it 'response data should be got' do
@@ -141,20 +140,12 @@ RSpec.describe Fcoin::Endpoint::Accounts do
                                     {"currency"=>"etc", "category"=>"main", "available"=>"0.382569624756478966", "frozen"=>"0.000000000000000000", "balance"=>"0.382569624756478966"}]
         expect(body['status']).to eq 0
       end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when client is not authorized', vcr: { cassette_name: 'accounts/balance_not_auth', record: :new_episodes } do
       it 'should return error message' do
         expect(body['msg']).to eq "api key check fail : {\"status\":1020,\"msg\":\"api key not found : Fcoin API Public Key\"}"
         expect(body['status']).to  eq 6005
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
       end
     end
   end
