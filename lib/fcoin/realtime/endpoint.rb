@@ -30,6 +30,10 @@ module Fcoin
         end
       end
 
+      def on_topics(&block)
+        on('topics', nil, &block)
+      end
+
       private
 
       def valid_level?(level)

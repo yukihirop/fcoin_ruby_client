@@ -22,4 +22,9 @@ RSpec.describe Fcoin::RealTime::EndPoint do
     xit 'subscribe data should be got' do
     end
   end
+
+  describe '#on_topics' do
+    xit 'subscribe data should be got' do
+    end
+  end
 end
