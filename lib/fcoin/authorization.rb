@@ -28,7 +28,7 @@ module Fcoin
 
     def encoded_signature
       base64_signature = Base64.strict_encode64(signature)
-      Base64.strict_encode64(OpenSSL::HMAC.digest('sha1', secret_key, base64_signature))
+      Base64.strict_encode64(OpenSSL::HMAC.digest('sha1', secret_key.to_s, base64_signature))
     end
 
     def signature

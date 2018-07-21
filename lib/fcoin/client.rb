@@ -1,4 +1,4 @@
-require "fcoin/api"
+require_relative 'api'
 
 module Fcoin
   class Client < API

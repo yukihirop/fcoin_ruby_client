@@ -1,36 +1,41 @@
-require_relative 'utility'
+require_relative 'wss'
 
-# @see https://developer.fcoin.com/jp.html?javascript#32c808cbe5
-# Scope Fcoin::API
+# Scope Fcoin::RealTime::API
 module Fcoin
-  module Endpoint
-    module Market
-      # GET https://api.fcoin.com/v2/market/ticker/$symbol
-      def market_ticker(symbol:)
-        get("market/ticker/#{symbol}", false)
+  module RealTime
+    module EndPoint
+      include Fcoin::RealTime::WSS
+
+      def on_ticker(symbol:, &block)
+        on("ticker.#{symbol}", nil, &block)
       end
 
-      # GET https://api.fcoin.com/v2/market/depth/$level/$symbol
-      def market_depth(symbol:, level:)
+      def on_depth(symbol:, level:, &block)
         if valid_level?(level)
-          get("market/depth/#{level}/#{symbol}", false)
+          on("depth.#{level}.#{symbol}", nil, &block)
         else
           raise InvalidValueError.new("Invalid value level: #{level}.\nPlease input L20, L100 or full.")
         end
       end
 
-      # GET https://api.fcoin.com/v2/market/trades/$symbol
-      def market_trades(symbol:)
-        get("market/trades/#{symbol}", false)
+      def on_trade(symbol:, limit: 20, &block)
+        on("trade.#{symbol}", limit, &block)
       end
 
-      # GET https://api.fcoin.com/v2/market/candles/$resolution/$symbol
-      def market_candles(symbol:, resolution:)
+      def on_candle(symbol:, resolution:, limit: 20, &block)
         if valid_resolution?(resolution)
-          get("market/candles/#{resolution}/#{symbol}", false)
+          on("candle.#{resolution}.#{symbol}", limit, &block)
         else
           raise InvalidValueError.new("Invalid value resolution: #{resolution}.\nPlease input M1, M3, M5, M15, M30, H1, H4, H6, D1, W1 or MN.")
         end
+      end
+
+      def on_topics(&block)
+        on('topics', nil, &block)
+      end
+
+      def on_hello(&block)
+        on('hello', nil, &block)
       end
 
       private

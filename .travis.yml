@@ -1,12 +1,25 @@
 sudo: false
+
 language: ruby
+
 rvm:
   - 2.4.1
+
 before_install: gem install bundler -v 1.16.0.pre.3
+
+before_script:
+  - mkdir log
+
 gemfile:
   - Gemfile
 bundler_args: "--without development --deployment"
-cache: bundler
+
+cache:
+  bundler: true
+
+install:
+  - bundle install
+
 script:
   - bundle exec rspec spec
   - bundle exec rspec spec --tag fcoin_auth

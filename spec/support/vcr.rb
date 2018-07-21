@@ -7,7 +7,9 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.debug_logger = File.open('log/vcr.log', 'w')
   config.before_record do |interaction|
-    interaction.request.headers['Fc-Access-Key'][0].sub!(/.*+/, '<Fc-Access-Key>')
-    interaction.request.headers['Fc-Access-Signature'][0].sub!(/.*+/, '<Fc-Access-Signature>')
+    if %w(Fc-Access-Key Fc-Access-Signature).in? interaction.request.headers.keys
+      interaction.request.headers['Fc-Access-Key'][0].sub!(/.*+/, '<Fc-Access-Key>')
+      interaction.request.headers['Fc-Access-Signature'][0].sub!(/.*+/, '<Fc-Access-Signature>')
+    end
   end
 end

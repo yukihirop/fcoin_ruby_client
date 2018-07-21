@@ -6,31 +6,21 @@ RSpec.describe Fcoin::Endpoint::Orders do
   describe '#create_order' do
     context 'when client is authorized', fcoin_auth: true do
       context 'when input correct', vcr: { cassette_name: 'orders/create_order_auth', record: :new_episodes } do
-        let(:response)  { client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) }
-        let(:body)      { JSON.parse(response.body) }
+        let(:body)  { client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) }
 
         it 'response data should be got' do
           # order_id
           expect(body['data']).to   eq "R0moy92q4Qaf_GDEQ6Y1IKCgl5wwJM2bz_Zyacp-Ek8="
           expect(body['status']).to eq 0
         end
-
-        it 'response status code is 200' do
-          expect(response.status).to eq 200
-        end
       end
 
       context 'when input incorrect', vcr: { cassette_name: 'orders/create_order_auth_incorrect', record: :new_episodes } do
-        let(:response)  { client.create_order(symbol: :ftft, side: :sell, type: :limit, price: 10, amount: 10) }
-        let(:body)      { JSON.parse(response.body) }
+        let(:body)  { client.create_order(symbol: :ftft, side: :sell, type: :limit, price: 10, amount: 10) }
 
         it 'should return error message' do
           expect(body['msg']).to    eq "invalid symbol: ftft"
           expect(body['status']).to eq 1004
-        end
-
-        it 'response status code is 200' do
-          expect(response.status).to eq 400
         end
       end
 
@@ -43,24 +33,18 @@ RSpec.describe Fcoin::Endpoint::Orders do
     end
 
     context 'when client is not authorized', vcr: { cassette_name: 'orders/create_order_not_auth', record: :new_episodes } do
-      let(:response)  { client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) }
-      let(:body)      { JSON.parse(response.body) }
+      let(:body)  { client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) }
       
       it 'should return error message' do
         expect(body['msg']).to    eq "api key check fail : {\"status\":1020,\"msg\":\"api key not found : Fcoin API Public Key\"}"
         expect(body['status']).to eq 6005
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
       end
     end
   end
 
   describe '#order_list', fcoin_auth: true, vcr: { cassette_name: 'orders/order_list_auth', record: :new_episodes } do
     context 'when input correct' do
-      let(:response)   { client.order_list(symbol: :ethusdt, states: :canceled, page_before: nil, page_after: nil, per_page: 20) }
-      let(:body)       { JSON.parse(response.body) }
+      let(:body)   { client.order_list(symbol: :ethusdt, states: :canceled, page_before: nil, page_after: nil, per_page: 20) }
       let(:first_data) { body['data'].first }
 
       it 'response data should be got' do
@@ -78,23 +62,14 @@ RSpec.describe Fcoin::Endpoint::Orders do
         expect(first_data['state']).to          eq "canceled"
         expect(body['status']).to               eq 0
       end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when input incorrect' do
-      let(:response)  { client.order_list(symbol: :ftft, states: :canceled) }
-      let(:body)      { JSON.parse(response.body) }
+      let(:body)  { client.order_list(symbol: :ftft, states: :canceled) }
 
       it 'should return error message' do
         expect(body['msg']).to    eq "invalid symbol: ftft"
         expect(body['status']).to eq 1004
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 400
       end
     end
 
@@ -109,8 +84,7 @@ RSpec.describe Fcoin::Endpoint::Orders do
 
   describe '#order(reference_order)', fcoin_auth: true, vcr: { cassette_name: 'orders/reference_order_auth', record: :new_episodes } do
     context 'when input correct' do
-      let(:response) { client.order(order_id: "L7rbALEIoI0ymo3uOXBF4gT4BlyTxgHhGoZjvptIv2U=") }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.order(order_id: "L7rbALEIoI0ymo3uOXBF4gT4BlyTxgHhGoZjvptIv2U=") }
 
       it 'response data should be got' do
         expect(body['data']['id']).to             eq "L7rbALEIoI0ymo3uOXBF4gT4BlyTxgHhGoZjvptIv2U="
@@ -130,8 +104,7 @@ RSpec.describe Fcoin::Endpoint::Orders do
     end
 
     context 'when input incorrect' do
-      let(:response) { client.order(order_id: 'invalid_order_id') }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.order(order_id: 'invalid_order_id') }
 
       it 'should return error message' do
         expect(body['msg']).to    eq "bad argument: invalid_order_id"
@@ -149,29 +122,19 @@ RSpec.describe Fcoin::Endpoint::Orders do
 
   describe '#cancel_order', fcoin_auth: true, vcr: { cassette_name: 'orders/cancel_order_auth', record: :new_episodes } do
     context 'when input correct' do
-      let(:response) { client.cancel_order(order_id: "nMEC_VrW0LYlP4iCcWzmdL50jFrvNWZoaQxvZSjeUSA=") }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.cancel_order(order_id: "nMEC_VrW0LYlP4iCcWzmdL50jFrvNWZoaQxvZSjeUSA=") }
 
       it 'response data should be got' do
         expect(body['status']).to eq 0
       end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when input incorrect' do
-      let(:response) { client.cancel_order(order_id: :invalid_order_id) }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.cancel_order(order_id: :invalid_order_id) }
 
       it 'response data should be got' do
         expect(body['msg']).to    eq "bad argument: invalid_order_id"
         expect(body['status']).to eq 1001
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 400
       end
     end
 
@@ -185,8 +148,7 @@ RSpec.describe Fcoin::Endpoint::Orders do
 
   describe '#order_match_results(order_transaction)', fcoin_auth: true, vcr: { cassette_name: 'orders/order_match_results_auth', record: :new_episodes } do
     context 'when input correct' do
-      let(:response)   { client.order_match_results(order_id: "kW3cRiXIGHG-cHNdterbFBaVRsYfNqfoMzbeHEQcqp4=") }
-      let(:body)       { JSON.parse(response.body) }
+      let(:body)   { client.order_match_results(order_id: "kW3cRiXIGHG-cHNdterbFBaVRsYfNqfoMzbeHEQcqp4=") }
       let(:first_data) { body['data'].first }
 
       it 'response data should be got' do
@@ -198,23 +160,14 @@ RSpec.describe Fcoin::Endpoint::Orders do
         expect(first_data['created_at']).to    eq 1531734385085
         expect(body['status']).to              eq 0
       end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 200
-      end
     end
 
     context 'when input incorrect' do
-      let(:response) { client.order_match_results(order_id: :invalid_order_id) }
-      let(:body)     { JSON.parse(response.body) }
+      let(:body) { client.order_match_results(order_id: :invalid_order_id) }
 
       it 'response data should be got' do
         expect(body['msg']).to    eq "bad argument: invalid_order_id"
         expect(body['status']).to eq  1001
-      end
-
-      it 'response status code is 200' do
-        expect(response.status).to eq 400
       end
     end
 
