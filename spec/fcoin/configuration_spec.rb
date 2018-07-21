@@ -9,6 +9,7 @@ RSpec.describe Fcoin::Configuration do
     end
 
     subject { dummy_class.options }
+    let(:ca_path) { %x[ openssl version -a | grep OPENSSLDIR | awk '{print $2}'|sed -e 's/\"//g' ].chomp }
     let(:after_initialize_options) do
       {
         :adapter     => :net_http,
@@ -18,8 +19,8 @@ RSpec.describe Fcoin::Configuration do
         :api_key     => 'Fcoin API Public Key',
         :secret_key  => 'Fcoin API Secret Key',
         :proxy       => nil,
-        :ca_path     => '/private/etc/ssl',
-        :ca_file     => '/private/etc/ssl/ca-certificates.crt',
+        :ca_path     => ca_path,
+        :ca_file     => "#{ca_path}/ca-certificates.crt",
         :middlewares => []
       }
     end
