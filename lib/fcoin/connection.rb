@@ -1,4 +1,5 @@
 require 'faraday_middleware'
+require_relative 'faraday/fcoin_formatter'
 
 # Scope Fcoin::API
 module Fcoin
@@ -20,6 +21,8 @@ module Fcoin
         conn.request :multipart
         conn.request :url_encoded
         conn.request :json
+
+        conn.response :fcoin_formatter
         conn.adapter(adapter)
       end
     end

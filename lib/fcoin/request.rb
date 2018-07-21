@@ -1,4 +1,5 @@
 require_relative 'authorization'
+require_relative 'formatter'
 
 # Scope Fcoin::API
 module Fcoin
@@ -45,7 +46,8 @@ module Fcoin
           request.body = payload unless payload.empty?
         end
       end
-      return JSON.load(response.body)
+
+      return response.body
     end
   end
 end
