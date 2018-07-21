@@ -15,9 +15,19 @@ RSpec.describe Fcoin::Endpoint::Market do
       let(:body) { client.market_ticker(symbol: :fteth) }
       
       it 'response data should be got' do
-        expect(body['data']['ticker']).to eq [0.00058321, 701.68, 0.00058276, 3.9, 0.00058298, 5.0, 0.00057335, 0.00064789, 0.0005328, 218874435.2093026, 125152.76630129317]
+        expect(body['data']['ticker']['btcusdt_base_price_today']).to eq 256708.07246276314
+        expect(body['data']['ticker']['btcusdt_base_vol_today']).to   eq 511357160.8024736
+        expect(body['data']['ticker']['highest_price_today']).to      eq 0.00052632
+        expect(body['data']['ticker']['latest_price']).to             eq 0.00047
+        expect(body['data']['ticker']['lowest_price_today']).to       eq 0.0004507
+        expect(body['data']['ticker']['max_buy_amount']).to           eq 127.86
+        expect(body['data']['ticker']['max_buy_price']).to            eq 0.00046966
+        expect(body['data']['ticker']['min_sell_amount']).to          eq 9940.53
+        expect(body['data']['ticker']['min_sell_price']).to           eq 0.00046998
+        expect(body['data']['ticker']['most_recent_trade_vol']).to    eq 15.0
+        expect(body['data']['ticker']['trade_price_yesterday']).to    eq 0.00052476
         expect(body['data']['type']).to   eq 'ticker.fteth'
-        expect(body['data']['seq']).to    eq 17433962
+        expect(body['data']['seq']).to    eq 20030480
         expect(body['status']).to         eq 0
       end
     end
@@ -44,12 +54,14 @@ RSpec.describe Fcoin::Endpoint::Market do
       let(:body) { client.market_depth(symbol: :fteth, level: :L20) }
 
       it 'response data should be got' do
-        expect(body['data']['bids']).to eq [0.000577640,5.000000000,0.000577630,1952.350000000,0.000577540,55.000000000,0.000577450,3.500000000,0.000577340,70.000000000,0.000577250,3.900000000,0.000577240,12.370000000,0.000577040,3.270000000,0.000577030,23.380000000,0.000577010,3.050000000,0.000577000,1362.350000000,0.000576950,977.660000000,0.000576910,500.000000000,0.000576710,3.360000000,0.000576700,3.860000000,0.000576690,7592.700000000,0.000576570,1000.000000000,0.000576500,2485.640000000,0.000576490,159.580000000,0.000576480,3.090000000]
-        expect(body['data']['asks']).to eq [0.000577650,1558.975699600,0.000578000,432.820000000,0.000578010,3.700000000,0.000578020,4.640000000,0.000578030,3.910000000,0.000578190,23.370000000,0.000578310,3.670000000,0.000578320,3.740000000,0.000578380,155.570000000,0.000578770,130.000000000,0.000578810,158.940000000,0.000578910,3.700000000,0.000578920,130.000000000,0.000579010,13.580000000,0.000579030,130.000000000,0.000579090,420.000000000,0.000579230,600.000000000,0.000579270,973.740000000,0.000579350,23.290000000,0.000579390,23.260000000]
-        expect(body['data']['ts']).to   eq 1531570757013
-        expect(body['data']['seq']).to  eq 17440636
-        expect(body['data']['type']).to eq 'depth.L20.fteth'
-        expect(body['status']).to       eq 0
+        expect(body['data']['bids'][0]['amount']).to eq 336.46
+        expect(body['data']['bids'][0]['price']).to  eq 0.00047153
+        expect(body['data']['asks'][0]['amount']).to eq 1062.205609
+        expect(body['data']['asks'][0]['price']).to  eq 0.00047185
+        expect(body['data']['ts']).to                eq 1532156185014
+        expect(body['data']['seq']).to               eq 20030698
+        expect(body['data']['type']).to              eq 'depth.L20.fteth'
+        expect(body['status']).to                    eq 0
       end
     end
 
