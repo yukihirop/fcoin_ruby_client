@@ -3,127 +3,134 @@ zh_CN:
   fcoin:
     endpoints:
       rest:
-        accounts:
-        accounts/balance:
+        accounts: 账户
+        accounts/balance: 资产
         accounts/balance/data:
-          currency:
-          category:
-          available:
-          frozen:
-          balance:
-        market:
-        market/candles:
+          currency: 货币
+          category: 类别　(主板A or 主板B or GPM)
+          available: 可用
+          frozen:　冻结
+          balance: 资产
+        market: 行情
+        market/candles: Candle Information
         market/candles/data:
-          open:
-          close:
-          high:
-          quote_vol:
-          id:
-          count:
-          low:
-          seq:
-          base_vol:
-        market/depth:
+          open: 开盘价
+          close: 收盘价
+          high: 价格高
+          quote_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+          id: ID
+          count: 算
+          low: 价值低
+          seq: Seq
+          base_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+        market/depth: Depth Information
         market/depth/data:
-          bids:
-            price:
-            amount:
-          asks:
-            price:
-            amount:
-          ts:
-          seq:
-        market/ticker:
+          bids: Bids
+            price: 价格
+            amount: 数量
+          asks: Asks
+            price: 价格
+            amount: 数量
+          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          seq: Seq
+        market/ticker: Ticker Information
         market/ticker/data:
           ticker:
-            last_price:
-            most_recent_trade_vol:
-            max_buy_price:
-            max_buy_amount:
-            min_sell_price:
-            min_sell_amount:
-            trade_price_yesterday:
-            highest_price_today:
-            lowest_price_today:
-            btcusdt_base_vol_today:
-            btcusdt_base_price_today:
-        market/trades:
+            last_price: 最新成交价
+            most_recent_trade_vol: 最近一笔成交的成交量
+            max_buy_price: 最大买一价
+            max_buy_amount: 最大买一量
+            min_sell_price: 最小卖一价
+            min_sell_amount: 最小卖一量
+            trade_price_yesterday: 24小时前成交价
+            highest_price_today: 24小时内最高价
+            lowest_price_today: 24小时内最低价
+            btcusdt_base_vol_today: 24小时内基准货币成交量, 如 %{symbol} 中 %{coin} 的量
+            btcusdt_base_price_today: 24小时内计价货币成交量, 如 %{symbol} 中 %{coin} 的量
+        market/trades: 成交
         market/trades/data:
-          amount:
-          ts:
-          id:
-          side:
-          price:
-        orders:
-        orders/list:
+          amount: 数量
+          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          id: ID
+          side: 交易方向（buy, sell）
+          price: 价格
+        orders: 订单
+        orders/list: 订单清单
         orders/list/data:
-          id:
-          symbol:
-          amount:
-          price:
-          created_at:
-          type:
-          side:
-          filled_amount:
-          executed_value:
-          fill_fees:
-          source:
-          state:
+          id: ID
+          symbol: 交易对
+          amount: 下单数量
+          price: 下单价格
+          created_at: 创建时间
+          type: 订单类型（limit，market）
+          side: 交易方向（buy, sell）
+          filled_amount: 成交量
+          executed_value: 已成交
+          fill_fees: 手续费
+          source: 来源 (api or 手册)
+          state: 订单状态
+          state/submitted: 已提交
+          state/partial_filled: 部分成交
+          state/partial_canceled: 部分成交已撤销
+          state/filled: 完全成交
+          state/canceled: 已撤销
+          state/pending_cancel: 撤销已提交
         public:
-        public/server-time:
-        public/currencies:
-        public/symbols:
+        public/server-time: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+        public/currencies: 处理货币
+        public/symbols: 交易对
       wss:
-        candle:
+        candle: Candle Information (实时)
         candle/data:
-          open:
-          type:
-          close:
-          high:
-          quote_vol:
-          id:
-          count:
-          low:
-          seq:
-          base_vol:
-        depth:
+          open: 开盘价
+          type: 订阅频道
+          close: 收盘价
+          high: 价格高
+          quote_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+          id: ID
+          count: 算
+          low: 价值低
+          seq: Seq
+          base_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+        depth: Depth Infrmation (实时)
         depth/data:
-          bids:
-            price:
-            amount:
-          asks:
-            price:
-            amount:
-          ts:
-          seq:
-          type:
-        trade:
+          bids: Bids
+            price: 价格
+            amount: 数量
+          asks: Asks
+            price: 价格
+            amount: 数量
+          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          seq: Seq
+          type: 订阅频道
+        trade: 成交 (实时)
         trade/data:
-          amount:
-          type:
-          ts:
-          id:
-          side:
-          price:
-        ticker:
+          amount: 下单数量
+          type: 订阅频道
+          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          id: ID
+          side: 交易方向（buy, sell）
+          price: 下单价格
+        ticker: Ticker Infrmation (实时)
         ticker/data:
-          last_price:
-          most_recent_trade_vol:
-          max_buy_price:
-          max_buy_amount:
-          min_sell_price:
-          min_sell_amount:
-          trade_price_yesterday:
-          highest_price_today:
-          lowest_price_today:
-          btcusdt_base_vol_today:
-          btcusdt_base_price_today:
-        topics:
+          last_price: 最新成交价
+          most_recent_trade_vol: 最近一笔成交的成交量
+          max_buy_price: 最大买一价
+          max_buy_amount: 最大买一量
+          min_sell_price: 最小卖一价
+          min_sell_amount: 最小卖一量
+          trade_price_yesterday: 24小时前成交价
+          highest_price_today: 24小时内最高价
+          lowest_price_today: 24小时内最低价
+          btcusdt_base_vol_today: 24小时内基准货币成交量, 如 %{symbol} 中 %{coin} 的量
+          btcusdt_base_price_today: 24小时内计价货币成交量, 如 %{symbol} 中 %{coin} 的量
+          type: 订阅频道
+        topics: 订阅频道列表 (实时)
         topics/data:
-          id:
-          type:
-          topics:
+          id: ID
+          type: 订阅频道
+          topics: 订阅频道列表
         hello:
         hello/data:
-          type:
-          ts:
+          type: 订阅频道
+          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
