@@ -34,6 +34,10 @@ module Fcoin
         on('topics', nil, &block)
       end
 
+      def on_hello(&block)
+        on('hello', nil, &block)
+      end
+
       private
 
       def valid_level?(level)
