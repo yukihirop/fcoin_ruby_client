@@ -23,6 +23,20 @@ en:
           low: Low Price
           seq: Seq
           base_vol: Base Volume (Base Volume %{coin} of %{symbol})
+        market/candles/params:
+          symbol: Symbol
+          resolution: resolution
+          resolution/M1: 1 minute
+          resolution/M3: 3 minutes
+          resolution/M5: 5 minutes
+          resolution/M15: 15 minutes
+          resolution/M30: 30 minutes
+          resolution/H1: 1 hour
+          resolution/H4: 4 hours
+          resolution/H6: 6 hours
+          resolution/D1: 1 day
+          resolution/W1: 1 week
+          resolution/MN: 1 month
         market/depth: Trading Information
         market/depth/data:
           bids: Bids
@@ -33,6 +47,12 @@ en:
             amount: Amount
           ts: Server Time (epoc millisecond)
           seq: Seq
+        market/depth/params:
+          symbol: Symbol
+          level: Level
+          level/L20: 20 Level
+          level/L100: 100 Level
+          level/full: Full Level
         market/ticker: Ticker Information
         market/ticker/data:
           ticker:
@@ -92,6 +112,20 @@ en:
           low: Low Price
           seq: Seq
           base_vol: Base Volume (Base Volume %{coin} of %{symbol})
+        candle/params:
+          symbol: Symbol
+          resolution: resolution
+          resolution/M1: 1 minute
+          resolution/M3: 3 minutes
+          resolution/M5: 5 minutes
+          resolution/M15: 15 minutes
+          resolution/M30: 30 minutes
+          resolution/H1: 1 hour
+          resolution/H4: 4 hours
+          resolution/H6: 6 hours
+          resolution/D1: 1 day
+          resolution/W1: 1 week
+          resolution/MN: 1 month
         depth: Depth Information (RealTime)
         depth/data:
           bids: Bids
@@ -103,6 +137,12 @@ en:
           ts: Server Time (epoc millisecond)
           seq: Seq
           type: Sucscribe Channel
+        depth/params:
+          symbol: Symbol
+          level: Level
+          level/L20: 20 Level
+          level/L100: 100 Level
+          level/full: Full Level
         trade: Trade Information (RealTime)
         trade/data:
           amount: Amount

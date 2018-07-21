@@ -17,12 +17,26 @@ zh_CN:
           open: 开盘价
           close: 收盘价
           high: 价格高
-          quote_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+          quote_vol: 货币成交量, %{symbol} 中 %{coin} 的量
           id: ID
           count: 算
           low: 价值低
           seq: Seq
-          base_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+          base_vol: 货币成交量, %{symbol} 中 %{coin} 的量
+        market/candles/params:
+          symbol: 交易对
+          resolution: 分解能
+          resolution/M1: 1分钟
+          resolution/M3: 3分钟
+          resolution/M5: 5分钟
+          resolution/M15: 15分钟
+          resolution/M30: 30分钟
+          resolution/H1: 1小时
+          resolution/H4: 4小时
+          resolution/H6: 6小时
+          resolution/D1: 1日
+          resolution/W1: 1週
+          resolution/MN: 1月
         market/depth: Depth Information
         market/depth/data:
           bids: Bids
@@ -31,8 +45,14 @@ zh_CN:
           asks: Asks
             price: 价格
             amount: 数量
-          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          ts: 推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
           seq: Seq
+        market/depth/params:
+          symbol: 交易对
+          level: 行情深度类型
+          level/L20: 20档行情深度
+          level/L100: 100档行情深度
+          level/full: 全量的行情深度
         market/ticker: Ticker Information
         market/ticker/data:
           ticker:
@@ -45,12 +65,12 @@ zh_CN:
             trade_price_yesterday: 24小时前成交价
             highest_price_today: 24小时内最高价
             lowest_price_today: 24小时内最低价
-            btcusdt_base_vol_today: 24小时内基准货币成交量, 如 %{symbol} 中 %{coin} 的量
-            btcusdt_base_price_today: 24小时内计价货币成交量, 如 %{symbol} 中 %{coin} 的量
+            btcusdt_base_vol_today: 24小时内基准货币成交量, %{symbol} 中 %{coin} 的量
+            btcusdt_base_price_today: 24小时内计价货币成交量, %{symbol} 中 %{coin} 的量
         market/trades: 成交
         market/trades/data:
           amount: 数量
-          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          ts: 推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
           id: ID
           side: 交易方向（buy, sell）
           price: 价格
@@ -76,7 +96,7 @@ zh_CN:
           state/canceled: 已撤销
           state/pending_cancel: 撤销已提交
         public:
-        public/server-time: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+        public/server-time: 推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
         public/currencies: 处理货币
         public/symbols: 交易对
       wss:
@@ -86,12 +106,26 @@ zh_CN:
           type: 订阅频道
           close: 收盘价
           high: 价格高
-          quote_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+          quote_vol: 货币成交量, %{symbol} 中 %{coin} 的量
           id: ID
           count: 算
           low: 价值低
           seq: Seq
-          base_vol: 货币成交量, 如 %{symbol} 中 %{coin} 的量
+          base_vol: 货币成交量, %{symbol} 中 %{coin} 的量
+        candle/params:
+          symbol: 交易对
+          resolution: 分解能
+          resolution/M1: 1分钟
+          resolution/M3: 3分钟
+          resolution/M5: 5分钟
+          resolution/M15: 15分钟
+          resolution/M30: 30分钟
+          resolution/H1: 1小时
+          resolution/H4: 4小时
+          resolution/H6: 6小时
+          resolution/D1: 1日
+          resolution/W1: 1週
+          resolution/MN: 1月
         depth: Depth Infrmation (实时)
         depth/data:
           bids: Bids
@@ -100,14 +134,20 @@ zh_CN:
           asks: Asks
             price: 价格
             amount: 数量
-          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          ts: 推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
           seq: Seq
           type: 订阅频道
+        depth/params:
+          symbol: 交易对
+          level: 行情深度类型
+          level/L20: 20档行情深度
+          level/L100: 100档行情深度
+          level/full: 全量的行情深度
         trade: 成交 (实时)
         trade/data:
           amount: 下单数量
           type: 订阅频道
-          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          ts: 推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
           id: ID
           side: 交易方向（buy, sell）
           price: 下单价格
@@ -122,8 +162,8 @@ zh_CN:
           trade_price_yesterday: 24小时前成交价
           highest_price_today: 24小时内最高价
           lowest_price_today: 24小时内最低价
-          btcusdt_base_vol_today: 24小时内基准货币成交量, 如 %{symbol} 中 %{coin} 的量
-          btcusdt_base_price_today: 24小时内计价货币成交量, 如 %{symbol} 中 %{coin} 的量
+          btcusdt_base_vol_today: 24小时内基准货币成交量, %{symbol} 中 %{coin} 的量
+          btcusdt_base_price_today: 24小时内计价货币成交量, %{symbol} 中 %{coin} 的量
           type: 订阅频道
         topics: 订阅频道列表 (实时)
         topics/data:
@@ -133,4 +173,4 @@ zh_CN:
         hello:
         hello/data:
           type: 订阅频道
-          ts: 表示推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.
+          ts: 推送服务器的时间. 是毫秒为单位的数字型字段, unix epoch in millisecond.

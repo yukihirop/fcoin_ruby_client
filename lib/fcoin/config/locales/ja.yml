@@ -23,6 +23,20 @@ en:
           low: 低値
           seq: Seq
           base_vol: 出来高 (%{symbol}板の%{coin}の出来高)
+        market/candles/params:
+          symbol: ペア
+          resolution: 分解能
+          resolution/M1: 1分足
+          resolution/M3: 3分足
+          resolution/M5: 5分足
+          resolution/M15: 15分足
+          resolution/M30: 30分足
+          resolution/H1: 1時間足
+          resolution/H4: 4時間足
+          resolution/H6: 6時間足
+          resolution/D1: 日足
+          resolution/W1: 週足
+          resolution/MN: 月足
         market/depth: 板情報
         market/depth/data:
           bids: 売り
@@ -33,6 +47,12 @@ en:
             amount: 数量
           ts: サーバータイム (エポックミリ秒)
           seq: Seq
+        market/depth/params:
+          symbol: ペア
+          level: 深度
+          level/L20: 20度
+          level/L100: 100度
+          level/full: フル
         market/ticker: ティッカー
         market/ticker/data:
           ticker:
@@ -92,6 +112,20 @@ en:
           low: 低値
           seq: Seq
           base_vol: 出来高 (%{symbol}板の%{coin}の出来高)
+        candle/params:
+          symbol: ペア
+          resolution: 分解能
+          resolution/M1: 1分足
+          resolution/M3: 3分足
+          resolution/M5: 5分足
+          resolution/M15: 15分足
+          resolution/M30: 30分足
+          resolution/H1: 1時間足
+          resolution/H4: 4時間足
+          resolution/H6: 6時間足
+          resolution/D1: 日足
+          resolution/W1: 週足
+          resolution/MN: 月足
         depth: 板情報 (リアルタイム)
         depth/data:
           bids: 売り
@@ -103,6 +137,12 @@ en:
           ts: サーバータイム(エポックミリ秒)
           seq: Seq
           type: 購読チャンネル
+        depth/params:
+          symbol: ペア
+          level: 深度
+          level/L20: 20度
+          level/L100: 100度
+          level/full: フル
         trade: 取引情報 (リアルタイム)
         trade/data:
           amount: 数量
