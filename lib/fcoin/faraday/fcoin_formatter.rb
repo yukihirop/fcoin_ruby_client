@@ -1,6 +1,5 @@
 require 'faraday'
 require_relative '../formatter'
-require 'pry'
 
 module FaradayMiddleware
   class FcoinFormatter < Faraday::Middleware
