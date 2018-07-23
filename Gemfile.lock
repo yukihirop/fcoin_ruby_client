@@ -4,6 +4,7 @@ PATH
     fcoin_ruby_client (0.1.0)
       activesupport
       config
+      dry-validation
       faraday
       faraday_middleware
       faye-websocket

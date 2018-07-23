@@ -12,10 +12,11 @@ module Fcoin
 
       # GET https://api.fcoin.com/v2/market/depth/$level/$symbol
       def market_depth(symbol:, level:)
-        if valid_level?(level)
+        validation = validation(__method__, level: level)
+        if validation.success?
           get("market/depth/#{level}/#{symbol}", false)
         else
-          raise InvalidValueError.new("Invalid value level: #{level}.\nPlease input L20, L100 or full.")
+          raise InvalidValueError.new(validation.messages[:level].first)
         end
       end
 
@@ -26,23 +27,12 @@ module Fcoin
 
       # GET https://api.fcoin.com/v2/market/candles/$resolution/$symbol
       def market_candles(symbol:, resolution:)
-        if valid_resolution?(resolution)
+        validation = validation(__method__, resolution: resolution)
+        if validation.success?
           get("market/candles/#{resolution}/#{symbol}", false)
         else
-          raise InvalidValueError.new("Invalid value resolution: #{resolution}.\nPlease input M1, M3, M5, M15, M30, H1, H4, H6, D1, W1 or MN.")
+          raise InvalidValueError.new(validation.messages[:resolution].first)
         end
-      end
-
-      private
-
-      def valid_level?(level)
-        valid_levels = %w(L20 L100 full) + %i(L20 L100 full)
-        level.in? valid_levels
-      end
-
-      def valid_resolution?(resolution)
-        valid_resolutions = %w(M1 M3 M5 M15 M30 H1 H4 H6 D1 W1 MN) + %i(M1 M3 M5 M15 M30 H1 H4 H6 D1 W1 MN)
-        resolution.in? valid_resolutions
       end
     end
   end

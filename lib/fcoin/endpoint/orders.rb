@@ -16,15 +16,26 @@ module Fcoin
       # - amount:
       def create_order(symbol:, side:, type:, price:, amount:)
         payload = { symbol: symbol, side: side, type: type, price: price, amount: amount }
-        valid_payload = sort_payload(payload)
-        post('orders', true, valid_payload)
+        validation = validation(__method__, payload)
+        binding.pry
+        if validation.success?
+          valid_payload = sort_payload(payload)
+          post('orders', true, valid_payload)
+        else
+          raise InvalidValueError.new(validation.messages[:states].first)
+        end
       end
 
       # GET https://api.fcoin.com/v2/orders
       def order_list(symbol:, states:, page_before: nil, page_after: nil, per_page: 20)
         params = { symbol: symbol, states: states, before: page_before, after: page_after, limit: per_page }
-        valid_params = sort_params(params)
-        get('orders', true, valid_params)
+        validation = validation(__method__, params)
+        if validation.success?
+          valid_params = sort_params(params)
+          get('orders', true, valid_params)
+        else
+          raise InvalidValueError.new(validation.messages[:states].first)
+        end
       end
 
       # GET https://api.fcoin.com/v2/orders/{order_id}

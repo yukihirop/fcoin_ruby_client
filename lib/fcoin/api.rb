@@ -1,6 +1,7 @@
 require_relative 'connection'
 require_relative 'request'
 require_relative 'endpoint'
+require_relative 'validation'
 require_relative 'error'
 require_relative 'realtime/api'
 require 'active_support'
@@ -11,6 +12,7 @@ module Fcoin
     include Connection
     include Request
     include Endpoint
+    include Validation
 
     def initialize(options={})
       self.merged_options = Fcoin.options.merge(options)

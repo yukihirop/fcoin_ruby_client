@@ -37,18 +37,6 @@ module Fcoin
       def on_hello(&block)
         on('hello', nil, &block)
       end
-
-      private
-
-      def valid_level?(level)
-        valid_levels = %w(L20 L100 full) + %i(L20 L100 full)
-        level.in? valid_levels
-      end
-
-      def valid_resolution?(resolution)
-        valid_resolutions = %w(M1 M3 M5 M15 M30 H1 H4 H6 D1 W1 MN) + %i(M1 M3 M5 M15 M30 H1 H4 H6 D1 W1 MN)
-        resolution.in? valid_resolutions
-      end
     end
   end
 end
