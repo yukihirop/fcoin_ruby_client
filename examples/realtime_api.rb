@@ -5,6 +5,9 @@ require 'pry'
 Fcoin.configure do |config|
   config.api_key    = ENV['FCOIN_API_KEY']
   config.secret_key = ENV['FCOIN_SECRET_KEY']
+  config.skip_validation = false
+  ## Please execute 「bundle exec fcoin validation init --path ./config」
+  config.validation_setting_path = File.expand_path('../../config/my_settings.yml', __FILE__)
 end
 
 client = Fcoin::RealTime::Client.new
