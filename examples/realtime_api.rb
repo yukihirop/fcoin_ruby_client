@@ -37,28 +37,4 @@ client.on_hello do |data|
   puts data
 end
 
-# client.on('ticker.ethusdt') do |data|
-#   puts data
-# end
-
-# client.on('depth.L20.uthusdt') do |data|
-#   puts data
-# end
-
-# client.on('trade.ethusdt', 5) do |data|
-#   puts data
-# end
-
-# client.on('candle.M1.ethusdt', 5) do |data|
-#   puts data
-# end
-
-# client.on('topics') do |data|
-#   puts data
-# end
-
-# client.on('hello') do |data|
-#   puts data
-# end
-
 client.subscribe
