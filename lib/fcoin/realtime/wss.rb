@@ -62,9 +62,9 @@ module Fcoin
         topic = args[:topic]
         limit = args[:limit]
         payload = if limit.present?
-                    { cmd: :sub, args: [topic, limit] }
+                    { cmd: :sub, args: [topic, limit], id: SecureRandom.uuid }
                   else
-                    { cmd: :sub, args: [topic] }
+                    { cmd: :sub, args: [topic], id: SecureRandom.uuid }
                   end
         JSON.dump(payload)
       end
