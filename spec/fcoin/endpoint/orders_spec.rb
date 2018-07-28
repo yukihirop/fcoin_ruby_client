@@ -16,11 +16,30 @@ RSpec.describe Fcoin::Endpoint::Orders do
       end
 
       context 'when input incorrect', vcr: { cassette_name: 'orders/create_order_auth_incorrect', record: :new_episodes } do
-        let(:body)  { client.create_order(symbol: :ftft, side: :sell, type: :limit, price: 10, amount: 10) }
+        context 'when symbol is not valid' do
+          let(:body)  { client.create_order(symbol: :ftft, side: :sell, type: :limit, price: 10, amount: 10) }
 
-        it 'should return error message' do
-          expect(body['msg']).to    eq "invalid symbol: ftft"
-          expect(body['status']).to eq 1004
+          it 'should return error message' do
+            expect(body['msg']).to    eq "invalid symbol: ftft"
+            expect(body['status']).to eq 1004
+          end
+        end
+
+        context 'when side and type and amount is not valid' do
+          subject { client.create_order(symbol: :ethusdt, side: :invalid_side, type: :invalid_limit, price: 1000, amount: 0.0001) }
+          it 'should be raise error' do
+            expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:side=>"side is invalid_side. side is not included in the [buy, sell].", :type=>"type is invalid_limit. type is not included in the [limit, market].", :amount=>"amount is 0.0001. amount is not between 0.001 and 10000."}')
+          end
+
+          context 'when skip validation' , vcr: { cassette_name: 'orders/create_order_auth_incorrect_skip_validation', record: :new_episodes } do
+            let(:body) { subject }
+            before { allow(client).to receive(:skip_validation).and_return(true) }
+
+            it 'should return error message' do
+              expect(body['msg']).to    eq "api key check fail : {\"status\":1090,\"msg\":\"Illegal API signature\"}"
+              expect(body['status']).to eq 6005
+            end
+          end
         end
       end
 
@@ -70,6 +89,31 @@ RSpec.describe Fcoin::Endpoint::Orders do
       it 'should return error message' do
         expect(body['msg']).to    eq "invalid symbol: ftft"
         expect(body['status']).to eq 1004
+      end
+
+      context 'when symbol is nil' do
+        subject { client.order_list(symbol: nil, states: :canceled) }
+        it 'should be raise error' do
+          expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:symbol=>"symbol is nil. symbol can\'t be blank"}')
+        end
+
+        context 'when skip validation', vcr: { cassette_name: 'orders/order_list_auth_skip_validation', record: :new_episodes } do
+          let(:body) { subject }
+          before { allow(client).to receive(:skip_validation).and_return(true) }
+
+
+          it 'should return error message' do
+            expect(body['msg']).to    eq "argument is not null: {0}"
+            expect(body['status']).to eq 1003
+          end
+        end
+      end
+
+      context 'when states is not valid' do
+        subject { client.order_list(symbol: :ethusdt, states: :invalid_states) }
+        it 'should be raise error' do
+          expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:states=>"states is invalid_states. states is not included in the [submitted, partial_filled, canceled, partial_canceled, filled, pending_cancel]."}')
+        end
       end
     end
 

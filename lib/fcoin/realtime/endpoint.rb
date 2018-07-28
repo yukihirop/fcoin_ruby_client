@@ -11,10 +11,11 @@ module Fcoin
       end
 
       def on_depth(symbol:, level:, &block)
-        if valid_level?(level)
+        validator = Fcoin::Validator.build(symbol: symbol, level: level, method_name: __method__)
+        if skip_validation || validator.valid?
           on("depth.#{level}.#{symbol}", nil, &block)
         else
-          raise InvalidValueError.new("Invalid value level: #{level}.\nPlease input L20, L100 or full.")
+          raise InvalidValueError.new(validator.messages)
         end
       end
 
@@ -23,10 +24,11 @@ module Fcoin
       end
 
       def on_candle(symbol:, resolution:, limit: 20, &block)
-        if valid_resolution?(resolution)
+        validator = Fcoin::Validator.build(symbol: symbol, resolution: resolution, method_name: __method__)
+        if skip_validation || validator.valid?
           on("candle.#{resolution}.#{symbol}", limit, &block)
         else
-          raise InvalidValueError.new("Invalid value resolution: #{resolution}.\nPlease input M1, M3, M5, M15, M30, H1, H4, H6, D1, W1 or MN.")
+          raise InvalidValueError.new(validator.messages)
         end
       end
 
@@ -36,18 +38,6 @@ module Fcoin
 
       def on_hello(&block)
         on('hello', nil, &block)
-      end
-
-      private
-
-      def valid_level?(level)
-        valid_levels = %w(L20 L100 full) + %i(L20 L100 full)
-        level.in? valid_levels
-      end
-
-      def valid_resolution?(resolution)
-        valid_resolutions = %w(M1 M3 M5 M15 M30 H1 H4 H6 D1 W1 MN) + %i(M1 M3 M5 M15 M30 H1 H4 H6 D1 W1 MN)
-        resolution.in? valid_resolutions
       end
     end
   end

@@ -6,12 +6,6 @@ require_relative 'formatter'
 module Fcoin
   module RealTime
     module WSS
-      def on(topic, limit=nil, &block)
-        self.topics << { topic: topic, limit: limit }
-        self.callbacks[topic] ||= []
-        self.callbacks[topic] << block if block_given?
-      end
-
       def subscribe
         EM.run do
           wss = Faye::WebSocket::Client.new(wss_endpoint)
@@ -47,6 +41,12 @@ module Fcoin
 
       private
 
+      def on(topic, limit=nil, &block)
+        self.topics << { topic: topic, limit: limit }
+        self.callbacks[topic] ||= []
+        self.callbacks[topic] << block if block_given?
+      end
+
       def on?(event_name)
         event_name.present? && callbacks[event_name].present?
       end
@@ -62,9 +62,9 @@ module Fcoin
         topic = args[:topic]
         limit = args[:limit]
         payload = if limit.present?
-                    { cmd: :sub, args: [topic, limit] }
+                    { cmd: :sub, args: [topic, limit], id: SecureRandom.uuid }
                   else
-                    { cmd: :sub, args: [topic] }
+                    { cmd: :sub, args: [topic], id: SecureRandom.uuid }
                   end
         JSON.dump(payload)
       end

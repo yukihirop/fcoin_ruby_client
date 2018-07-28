@@ -5,6 +5,9 @@ require 'pry'
 Fcoin.configure do |config|
   config.api_key    = ENV['FCOIN_API_KEY']
   config.secret_key = ENV['FCOIN_SECRET_KEY']
+  config.skip_validation = false
+  ## Please execute 「bundle exec fcoin validation init --path ./config」
+  config.validation_setting_path = File.expand_path('../../config/my_settings.yml', __FILE__)
 end
 
 client = Fcoin::RealTime::Client.new
@@ -17,7 +20,7 @@ client.on_ticker(symbol: :ethusdt) do |data|
   puts data
 end
 
-client.on_depth(level: :L20, symbol: :ethusdt) do |data|
+client.on_depth(symbol: :ethusdt, level: :L20) do |data|
   puts data
 end
 
@@ -36,29 +39,5 @@ end
 client.on_hello do |data|
   puts data
 end
-
-# client.on('ticker.ethusdt') do |data|
-#   puts data
-# end
-
-# client.on('depth.L20.uthusdt') do |data|
-#   puts data
-# end
-
-# client.on('trade.ethusdt', 5) do |data|
-#   puts data
-# end
-
-# client.on('candle.M1.ethusdt', 5) do |data|
-#   puts data
-# end
-
-# client.on('topics') do |data|
-#   puts data
-# end
-
-# client.on('hello') do |data|
-#   puts data
-# end
 
 client.subscribe

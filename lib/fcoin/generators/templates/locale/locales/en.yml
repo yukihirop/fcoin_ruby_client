@@ -1,0 +1,176 @@
+---
+en:
+  fcoin:
+    endpoints:
+      rest:
+        accounts: Account Information
+        accounts/balance: Finance
+        accounts/balance/data:
+          currency: Currency
+          category: Category (MainBoard A or MainBoard B or GPM)
+          available: Available
+          frozen: Frozen
+          balance: Blance
+        market: Trade Market
+        market/candles: Candle Information
+        market/candles/data:
+          open: Open Price
+          close: Close Price
+          high: Highest Price
+          quote_vol: Quote Volume (Quote Volume %{coin} of %{symbol})
+          id: ID
+          count: Count
+          low: Low Price
+          seq: Seq
+          base_vol: Base Volume (Base Volume %{coin} of %{symbol})
+        market/candles/params:
+          symbol: Symbol
+          resolution: resolution
+          resolution/M1: 1 minute
+          resolution/M3: 3 minutes
+          resolution/M5: 5 minutes
+          resolution/M15: 15 minutes
+          resolution/M30: 30 minutes
+          resolution/H1: 1 hour
+          resolution/H4: 4 hours
+          resolution/H6: 6 hours
+          resolution/D1: 1 day
+          resolution/W1: 1 week
+          resolution/MN: 1 month
+        market/depth: Trading Information
+        market/depth/data:
+          bids: Bids
+            price: Price
+            amount: Amount
+          asks: Asks
+            price: Price
+            amount: Amount
+          ts: Server Time (epoc millisecond)
+          seq: Seq
+        market/depth/params:
+          symbol: Symbol
+          level: Level
+          level/L20: 20 Level
+          level/L100: 100 Level
+          level/full: Full Level
+        market/ticker: Ticker Information
+        market/ticker/data:
+          ticker:
+            last_price: Last Price
+            most_recent_trade_vol: Most Recent Trade Volume
+            max_buy_price: Max Buy Price
+            max_buy_amount: Max Buy Amount
+            min_sell_price: Min Sell Price
+            min_sell_amount: Min Sell Amount
+            trade_price_yesterday: Trade Price at Yesterday
+            highest_price_today: Highest Price at Today
+            lowest_price_today: Lowest Price at Today
+            btcusdt_base_vol_today: Base Volume %{coin} of %{symbol}
+            btcusdt_base_price_today: Base Price %{coin} of %{symbol}
+        market/trades: Trade Information
+        market/trades/data:
+          amount: Amount
+          ts: Server Time (epoc millisecond)
+          id: ID
+          side: buy or sell
+          price: Price
+        orders: Order Information
+        orders/list: Order List
+        orders/list/data:
+          id: ID
+          symbol: Symbol
+          amount: Amount
+          price: Price
+          created_at: Created At
+          type: limit or market
+          side: buy or sell
+          filled_amount: Filled Amount
+          executed_value: Executed Value
+          fill_fees: Fill Fees
+          source: Source (API or Handling)
+          state: Order State
+          state/submitted: Submitted
+          state/partial_filled: Partial Filled
+          state/partial_canceled: Partial Canceled
+          state/filled: Filled
+          state/canceled: Canceled
+          state/pending_cancel: Pending Cancel
+        public:
+        public/server-time: Server Time (epoc millisecond)
+        public/currencies: Currencies
+        public/symbols: Symbols
+      wss:
+        candle: Candle Information (RealTime)
+        candle/data:
+          open: Open Price
+          type: Sucscribe Channel
+          close: Close Price
+          high: Highest Price
+          quote_vol: Quote Volume (Quote Volume %{coin} of %{symbol})
+          id: ID
+          count: Count
+          low: Low Price
+          seq: Seq
+          base_vol: Base Volume (Base Volume %{coin} of %{symbol})
+        candle/params:
+          symbol: Symbol
+          resolution: resolution
+          resolution/M1: 1 minute
+          resolution/M3: 3 minutes
+          resolution/M5: 5 minutes
+          resolution/M15: 15 minutes
+          resolution/M30: 30 minutes
+          resolution/H1: 1 hour
+          resolution/H4: 4 hours
+          resolution/H6: 6 hours
+          resolution/D1: 1 day
+          resolution/W1: 1 week
+          resolution/MN: 1 month
+        depth: Depth Information (RealTime)
+        depth/data:
+          bids: Bids
+            price: Price
+            amount: Amount
+          asks: Asks
+            price: Price
+            amount: Amount
+          ts: Server Time (epoc millisecond)
+          seq: Seq
+          type: Sucscribe Channel
+        depth/params:
+          symbol: Symbol
+          level: Level
+          level/L20: 20 Level
+          level/L100: 100 Level
+          level/full: Full Level
+        trade: Trade Information (RealTime)
+        trade/data:
+          amount: Amount
+          type: Subscribe Channel
+          ts: Server Time (epoc millisecond)
+          id: ID
+          side: buy or sell
+          price: Price
+        ticker: Ticker Information (RealTime)
+        ticker/data:
+          last_price: Last Price
+          most_recent_trade_vol: Most Recent Trade Volume
+          max_buy_price: Max Buy Price
+          max_buy_amount: Max Buy Amount
+          min_sell_price: Min Sell Price
+          min_sell_amount: Min Sell Amount
+          trade_price_yesterday: Trade Price at Yesterday
+          highest_price_today: Highest Price at Today
+          lowest_price_today: Lowest Price at Today
+          btcusdt_base_vol_today: Base Volume %{coin} of %{symbol}
+          btcusdt_base_price_today: Base Price %{coin} of %{symbol}
+          type: Subscribe Channel
+        topics: Topics (RealTime)
+        topics/data:
+          id: ID
+          type: Subscribe Channel
+          topics: Subscribe Channel Index
+        hello:
+        hello/data:
+          type: Subscribe Channel
+          ts: Server Time (epoc millisecond)

@@ -1,0 +1,10 @@
+---
+fcoin:
+  validation:
+    query:
+      side: [buy, sell]
+      type: [limit, market]
+      resolution: [M1, M3, M5, M15, M30, H1, H4, H6, D1, W1, MN]
+      level: [L20, L100, full]
+      states: [submitted, partial_filled, canceled, partial_canceled, filled, pending_cancel]
+      

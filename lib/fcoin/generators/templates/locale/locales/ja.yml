@@ -1,0 +1,176 @@
+---
+en:
+  fcoin:
+    endpoints:
+      rest:
+        accounts: アカウント情報
+        accounts/balance: 資産
+        accounts/balance/data:
+          currency: 通貨
+          category: カテゴリ(メインボードA or メインボードB or GPM)
+          available: 利用可能
+          frozen:　凍結
+          balance: 資産
+        market: 取引市場
+        market/candles: キャンドル情報
+        market/candles/data:
+          open: 始値
+          close: 終値
+          high: 高値
+          quote_vol: 取引額 (%{symbol}板の%{coin}の取引額)
+          id: ID
+          count: カウント
+          low: 低値
+          seq: Seq
+          base_vol: 出来高 (%{symbol}板の%{coin}の出来高)
+        market/candles/params:
+          symbol: ペア
+          resolution: 分解能
+          resolution/M1: 1分足
+          resolution/M3: 3分足
+          resolution/M5: 5分足
+          resolution/M15: 15分足
+          resolution/M30: 30分足
+          resolution/H1: 1時間足
+          resolution/H4: 4時間足
+          resolution/H6: 6時間足
+          resolution/D1: 日足
+          resolution/W1: 週足
+          resolution/MN: 月足
+        market/depth: 板情報
+        market/depth/data:
+          bids: 売り
+            price: 価格
+            amount: 数量
+          asks: 買い
+            price: 価格
+            amount: 数量
+          ts: サーバータイム (エポックミリ秒)
+          seq: Seq
+        market/depth/params:
+          symbol: ペア
+          level: 深度
+          level/L20: 20度
+          level/L100: 100度
+          level/full: フル
+        market/ticker: ティッカー
+        market/ticker/data:
+          ticker:
+            last_price: 最終値
+            most_recent_trade_vol: 最近のトランザクション出来高
+            max_buy_price: 最大購入価格
+            max_buy_amount: 最大購入数量
+            min_sell_price: 最小売却価格
+            min_sell_amount: 最小売却数量
+            trade_price_yesterday: 24時間前の取引価格
+            highest_price_today: 本日の高値
+            lowest_price_today: 本日の低値
+            btcusdt_base_vol_today: 本日の%{symbol}板の%{coin}の出来高
+            btcusdt_base_price_today: 本日の%{symbol}板の%{coin}の取引額
+        market/trades: 取引
+        market/trades/data:
+          amount: 数量
+          ts: サーバータイム(エポックミリ秒)
+          id: ID
+          side: buy or sell
+          price: 価格
+        orders: 注文
+        orders/list: 注文一覧
+        orders/list/data:
+          id: ID
+          symbol: ペア
+          amount: 数量
+          price: 価格
+          created_at: 注文日時
+          type: limit or market
+          side: buy or sell
+          filled_amount: 部分約定数量
+          executed_value: 約定値
+          fill_fees: 手数料
+          source: ソース (api or 手動)
+          state: 注文ステータス
+          state/submitted: 注文済み
+          state/partial_filled: 部分約定
+          state/partial_canceled: 一部取引キャンセル
+          state/filled: 約定済み
+          state/canceled: キャンセル済み
+          state/pending_cancel: キャンセル
+        public:
+        public/server-time: サーバータイム
+        public/currencies: 取扱通貨
+        public/symbols: 取引通貨詳細情報
+      wss:
+        candle: キャンドル情報 (リアルタイム)
+        candle/data:
+          open: 始値
+          type: 購読チャンネル
+          close: 終値
+          high: 高値
+          quote_vol: 取引額 (%{symbol}板の%{coin}の取引額)
+          id: ID
+          count: カウント
+          low: 低値
+          seq: Seq
+          base_vol: 出来高 (%{symbol}板の%{coin}の出来高)
+        candle/params:
+          symbol: ペア
+          resolution: 分解能
+          resolution/M1: 1分足
+          resolution/M3: 3分足
+          resolution/M5: 5分足
+          resolution/M15: 15分足
+          resolution/M30: 30分足
+          resolution/H1: 1時間足
+          resolution/H4: 4時間足
+          resolution/H6: 6時間足
+          resolution/D1: 日足
+          resolution/W1: 週足
+          resolution/MN: 月足
+        depth: 板情報 (リアルタイム)
+        depth/data:
+          bids: 売り
+            price: 価格
+            amount: 数量
+          asks: 買い
+            price: 価格
+            amount: 数量
+          ts: サーバータイム(エポックミリ秒)
+          seq: Seq
+          type: 購読チャンネル
+        depth/params:
+          symbol: ペア
+          level: 深度
+          level/L20: 20度
+          level/L100: 100度
+          level/full: フル
+        trade: 取引情報 (リアルタイム)
+        trade/data:
+          amount: 数量
+          type: 購読チャンネル
+          ts: サーバータイム(エポックミリ秒)
+          id: ID
+          side: buy or sell
+          price: 価格
+        ticker: ティッカー情報 (リアルタイム)
+        ticker/data:
+          last_price: 最終値
+          most_recent_trade_vol: 最近のトランザクション出来高
+          max_buy_price: 最大購入価格
+          max_buy_amount: 最大購入数量
+          min_sell_price: 最小売却価格
+          min_sell_amount: 最小売却数量
+          trade_price_yesterday: 24時間前の取引価格
+          highest_price_today: 本日の高値
+          lowest_price_today: 本日の低値
+          btcusdt_base_vol_today: 本日の%{symbol}板の%{coin}の出来高
+          btcusdt_base_price_today: 本日の%{symbol}板の%{coin}の取引額
+          type: 購読チャンネル
+        topics: 購読チャンネル一覧 (リアルタム)
+        topics/data:
+          id: ID
+          type: 購読チャンネル
+          topics: 購読チャンネル一覧
+        hello:
+        hello/data:
+          type: 購読チャンネル
+          ts: サーバータイム(エポックミリ秒)

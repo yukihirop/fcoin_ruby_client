@@ -1,4 +1,5 @@
 require_relative 'endpoint'
+require_relative '../validator'
 
 module Fcoin
   module RealTime

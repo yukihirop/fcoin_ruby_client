@@ -31,4 +31,39 @@ http_interactions:
       string: '{"status":0,"data":[{"open":0.000904000,"close":0.000565360,"high":0.000930000,"quote_vol":866076.288189974196720720,"id":1530374400,"count":3011075,"low":0.000489480,"seq":1749385600000,"base_vol":1394688128.613251550},{"id":1527782400,"seq":1136570100000,"high":0.002479900000000000,"low":0.000620950000000000,"open":0.001711000000000000,"close":0.000904000000000000,"count":6245555,"base_vol":21075468585.236243238000000000,"quote_vol":25608681.028049231103271870},{"id":1525104000,"seq":16079600000,"high":0.000375000000000000,"low":0.000210250000000000,"open":0.000341580000000000,"close":0.000254040000000000,"count":15424,"base_vol":52975193.232728081000000000,"quote_vol":16806.600884913316843300}]}'
     http_version: 
   recorded_at: Sat, 14 Jul 2018 16:07:59 GMT
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/market/candles/invalid_resolution/fteth
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 28 Jul 2018 11:15:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":40003,"msg":"invalid period"}'
+    http_version: 
+  recorded_at: Sat, 28 Jul 2018 11:15:33 GMT
 recorded_with: VCR 4.0.0
