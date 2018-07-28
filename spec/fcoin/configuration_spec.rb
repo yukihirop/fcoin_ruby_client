@@ -10,19 +10,21 @@ RSpec.describe Fcoin::Configuration do
 
     subject { dummy_class.options }
     let(:ca_path) { %x[ openssl version -a | grep OPENSSLDIR | awk '{print $2}'|sed -e 's/\"//g' ].chomp }
+    let(:root_path) { File.expand_path('.',nil) }
     let(:after_initialize_options) do
       {
-        :adapter         => :net_http,
-        :endpoint        => 'https://api.fcoin.com/v2/',
-        :wss_endpoint     => "wss://api.fcoin.com/v2/ws",
-        :user_agent      => "Fcoin Ruby Gem #{Fcoin::VERSION}",
-        :api_key         => 'Fcoin API Public Key',
-        :secret_key      => 'Fcoin API Secret Key',
-        :proxy           => nil,
-        :ca_path         => ca_path,
-        :ca_file         => "#{ca_path}/ca-certificates.crt",
-        :middlewares     => [],
-        :skip_validation => true
+        :adapter                 => :net_http,
+        :endpoint                => 'https://api.fcoin.com/v2/',
+        :wss_endpoint            => "wss://api.fcoin.com/v2/ws",
+        :user_agent              => "Fcoin Ruby Gem #{Fcoin::VERSION}",
+        :api_key                 => 'Fcoin API Public Key',
+        :secret_key              => 'Fcoin API Secret Key',
+        :proxy                   => nil,
+        :ca_path                 => ca_path,
+        :ca_file                 => "#{ca_path}/ca-certificates.crt",
+        :middlewares             => [],
+        :skip_validation         => true,
+        :validation_setting_path => "#{root_path}/lib/fcoin/config/custom_settings.yml"
       }
     end
 
