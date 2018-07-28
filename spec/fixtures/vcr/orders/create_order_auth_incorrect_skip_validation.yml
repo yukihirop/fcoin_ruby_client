@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.fcoin.com/v2/orders
+    body:
+      encoding: UTF-8
+      string: '{"amount":0.0001,"price":1000,"side":"invalid_side","symbol":"ethusdt","type":"invalid_limit"}'
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Fc-Access-Key:
+      - "<Fc-Access-Key>"
+      Fc-Access-Signature:
+      - "<Fc-Access-Signature>"
+      Fc-Access-Timestamp:
+      - '1532777667747'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sat, 28 Jul 2018 11:34:28 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: UTF-8
+      string: '{"status":6005,"msg":"api key check fail : {\"status\":1090,\"msg\":\"Illegal
+        API signature\"}"}'
+    http_version: 
+  recorded_at: Sat, 28 Jul 2018 11:34:28 GMT
+recorded_with: VCR 4.0.0

@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fcoin.com/v2/orders?after&before&limit=20&states=canceled&symbol
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Fcoin Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Fc-Access-Key:
+      - "<Fc-Access-Key>"
+      Fc-Access-Signature:
+      - "<Fc-Access-Signature>"
+      Fc-Access-Timestamp:
+      - '1532777792075'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: ''
+    headers:
+      Date:
+      - Sat, 28 Jul 2018 11:36:32 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx
+    body:
+      encoding: UTF-8
+      string: '{"status":1003,"msg":"argument is not null: {0}"}'
+    http_version: 
+  recorded_at: Sat, 28 Jul 2018 11:36:32 GMT
+recorded_with: VCR 4.0.0
