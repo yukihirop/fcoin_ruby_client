@@ -17,7 +17,7 @@ client.on_ticker(symbol: :ethusdt) do |data|
   puts data
 end
 
-client.on_depth(level: :L20, symbol: :ethusdt) do |data|
+client.on_depth(symbol: :ethusdt, level: :L20) do |data|
   puts data
 end
 
