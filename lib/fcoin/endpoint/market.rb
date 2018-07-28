@@ -14,7 +14,7 @@ module Fcoin
       # GET https://api.fcoin.com/v2/market/depth/$level/$symbol
       def market_depth(symbol:, level:)
         validator = Fcoin::Validator.build(level: level, method_name: __method__)
-        if validator.valid?
+        if skip_validation || validator.valid?
           get("market/depth/#{level}/#{symbol}", false)
         else
           raise InvalidValueError.new validator.messages
@@ -29,7 +29,7 @@ module Fcoin
       # GET https://api.fcoin.com/v2/market/candles/$resolution/$symbol
       def market_candles(symbol:, resolution:)
         validator = Fcoin::Validator.build(resolution: resolution, method_name: __method__)
-        if validator.valid?
+        if skip_validation || validator.valid?
           get("market/candles/#{resolution}/#{symbol}", false)
         else
           raise InvalidValueError.new validator.messages
