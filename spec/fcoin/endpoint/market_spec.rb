@@ -69,7 +69,7 @@ RSpec.describe Fcoin::Endpoint::Market do
       subject { client.market_depth(symbol: :fteth, level: :invalid_level) }
 
       it 'should be raise error' do
-        expect { subject }.to raise_error(Fcoin::InvalidValueError, "Invalid value level: invalid_level.\nPlease input L20, L100 or full.")
+        expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:level=>"level is invalid_level. level is not included in the [L20, L100, full]."}')
       end
     end
   end
@@ -135,7 +135,7 @@ RSpec.describe Fcoin::Endpoint::Market do
     context 'when input incorrect' do
       subject { client.market_candles(resolution: :invalid_resolution, symbol: :fteth) }
       it 'shoud be raise error' do
-        expect { subject }.to raise_error(Fcoin::InvalidValueError, "Invalid value resolution: invalid_resolution.\nPlease input M1, M3, M5, M15, M30, H1, H4, H6, D1, W1 or MN.")
+        expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:resolution=>"resolution is invalid_resolution. resolution is not included in the [M1, M3, M5, M15, M30, H1, H4, H6, D1, W1, MN]."}')
       end
     end
   end
