@@ -6,9 +6,9 @@ module Fcoin
   class Validator
     def self.build(params)
       case params[:method_name]
-      when /market_depth/
+      when /market_depth|on_depth/
         MarketValidator.new(params.slice(:level, :method_name))
-      when /market_candles/
+      when /market_candles|on_candle/
         MarketValidator.new(params.slice(:resolution, :method_name))
       when /create_order/
         OrdersValidator.new(params.slice(:symbol, :side, :type, :price, :amount, :method_name))

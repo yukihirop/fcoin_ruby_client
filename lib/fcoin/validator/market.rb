@@ -13,9 +13,9 @@ module Fcoin
 
     def valid?
       case method_name
-      when /market_depth/
+      when /market_depth|on_depth/
         valid_level?
-      when /market_candles/
+      when /market_candles|on_candle/
         valid_resolution?
       end
     end
@@ -24,9 +24,9 @@ module Fcoin
       return {} if valid?
       results = []
       case method_name
-      when /market_depth/
+      when /market_depth|on_depth/
         results << includes_error_message(level, :level, valid_levels) unless valid_level?
-      when /market_candles/
+      when /market_candles|on_candle/
         results << includes_error_message(resolution, :resolution, valid_resolutions) unless valid_resolution?
       end
       results.compact&.each_with_object({}) { |message, data| data.merge!(message) }
