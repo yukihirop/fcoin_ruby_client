@@ -1,4 +1,5 @@
 require_relative 'utility'
+require_relative '../validator'
 
 # @see https://developer.fcoin.com/jp.html?javascript#32c808cbe5
 # Scope Fcoin::API
@@ -16,15 +17,25 @@ module Fcoin
       # - amount:
       def create_order(symbol:, side:, type:, price:, amount:)
         payload = { symbol: symbol, side: side, type: type, price: price, amount: amount }
-        valid_payload = sort_payload(payload)
-        post('orders', true, valid_payload)
+        validator = Fcoin::Validator.build(payload.merge(method_name: __method__))
+        if validator.valid?
+          valid_payload = sort_payload(payload)
+          post('orders', true, valid_payload)
+        else
+          raise InvalidValueError.new(validator.messages)
+        end
       end
 
       # GET https://api.fcoin.com/v2/orders
       def order_list(symbol:, states:, page_before: nil, page_after: nil, per_page: 20)
         params = { symbol: symbol, states: states, before: page_before, after: page_after, limit: per_page }
-        valid_params = sort_params(params)
-        get('orders', true, valid_params)
+        validator = Fcoin::Validator.build(params.merge(method_name: __method__))
+        if validator.valid?
+          valid_params = sort_params(params)
+          get('orders', true, valid_params)
+        else
+          raise InvalidValueError.new(validator.messages)
+        end
       end
 
       # GET https://api.fcoin.com/v2/orders/{order_id}
