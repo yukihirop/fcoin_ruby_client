@@ -7,6 +7,7 @@ PATH
       faraday
       faraday_middleware
       faye-websocket
+      thor
 
 GEM
   remote: https://rubygems.org/
@@ -88,6 +89,7 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
     safe_yaml (1.0.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
