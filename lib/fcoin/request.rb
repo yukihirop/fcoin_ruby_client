@@ -4,24 +4,29 @@ require_relative 'formatter'
 # Scope Fcoin::API
 module Fcoin
   module Request
+    # Perform an HTTP GET request
     def get(path, auth=true, payload={})
       request(:get, path, auth, payload)
     end
 
+    # Perform an HTTP POST request
     def post(path, auth=true, payload={})
       request(:post, path, auth, payload)
     end
 
+    # Perform an HTTP PUT request
     def put(path, auth=true, payload={})
       request(:put, path, auth, payload)
     end
 
+    # Perform an HTTP DELETE request
     def delete(path, auth=true, payload={})
       request(:delete, path, auth, payload)
     end
 
     private
 
+    # Perform an HTTP request
     def request(http_method, path, auth, payload)
       response = connection.send(http_method) do |request|
         required = {
