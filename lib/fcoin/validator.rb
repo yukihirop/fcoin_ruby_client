@@ -4,6 +4,18 @@ require_relative 'validator/orders'
 # Scope Fcoin::API
 module Fcoin
   class Validator
+    # Build a validator model depending on the method_name
+    #
+    # @param params [Hash] Parameter you want to verify including the called method name
+    # @option params :level [String or Symbol] Level of depth chart
+    # @option params :resolution [String or Symbol] period of Candles Chart
+    # @option params :symbol [String or Symbol] Transaction pair
+    # @option params :side [String or Symbol] Direction of the transaction
+    # @option params :type [String or Symbol] Order type
+    # @option params :price [Float]
+    # @option params :amount [Float]
+    # @option params :states [String] Order state
+    # @option params :method_name [String or Symbol] invoked method name
     def self.build(params)
       case params[:method_name]
       when /market_depth|on_depth/
@@ -19,10 +31,12 @@ module Fcoin
       end
     end
 
+    # Whether the parameters are valid?
     def valid?
       true
     end
 
+    # Error message when invalid
     def messages
       {}
     end

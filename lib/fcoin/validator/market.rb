@@ -5,12 +5,17 @@ module Fcoin
   class MarketValidator
     include ValidatorUtility
 
+    # @params params [Hash] Parameter you want to verify including the called method name
+    # @option params :level [String or Symbol] Level of depth chart
+    # @option params :resolution [String or Symbol] period of Candles Chart
+    # @option params :method_name [String or Symbol] invoked method name
     def initialize(params)
       self.level       = params[:level]
       self.resolution  = params[:resolution]
       self.method_name = params[:method_name]
     end
 
+    # Validate according to method_name
     def valid?
       case method_name
       when /market_depth|on_depth/
@@ -20,6 +25,7 @@ module Fcoin
       end
     end
 
+    # Error message when invalid
     def messages
       return {} if valid?
       results = []

@@ -4,6 +4,14 @@ module Fcoin
   class OrdersValidator
     include ValidatorUtility
 
+    # @param params [Hash] Parameter you want to verify including the called method name
+    # @option params :symbol [String or Symbol] Transaction pair
+    # @option params :side [String or Symbol] Direction of the transaction
+    # @option params :type [String or Symbol] Order type
+    # @option params :price [Float]
+    # @option params :amount [Float]
+    # @option params :states [String] Order state
+    # @option params :method_name [String or Symbol] invoked method name
     def initialize(params)
       self.symbol      = params[:symbol]
       self.side        = params[:side]
@@ -14,6 +22,7 @@ module Fcoin
       self.method_name = params[:method_name]
     end
 
+    # Validate according to method_name
     def valid?
       if symbol_setting_exist?
         case method_name
@@ -27,6 +36,7 @@ module Fcoin
       end
     end
 
+    # Error message when invalid
     def messages
       return {} if valid?
       results = []
