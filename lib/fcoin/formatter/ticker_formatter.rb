@@ -9,6 +9,9 @@ module Fcoin
       self.body = body
     end
 
+    # Format response body for JSON
+    #
+    # @return [Hash]
     def formatted_body
       # https://developer.fcoin.com/en.html
       ticker = body['data']['ticker'].dup
