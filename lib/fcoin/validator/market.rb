@@ -1,5 +1,4 @@
 require_relative 'utility'
-require 'pry'
 
 module Fcoin
   class MarketValidator

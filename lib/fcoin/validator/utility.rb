@@ -1,4 +1,3 @@
-require 'pry'
 module Fcoin
   module ValidatorUtility
     def includes_error_message(target, target_type, list)

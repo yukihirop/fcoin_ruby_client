@@ -1,6 +1,5 @@
 require "bundler/setup"
 require "fcoin"
-require "pry"
 
 Dir["./spec/support/**/*.rb"].each { |f| require f }
 
