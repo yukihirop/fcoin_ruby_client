@@ -43,10 +43,9 @@ module Fcoin
       :validation_setting_path
     ].freeze
 
-    # @private
     attr_accessor *VALID_OPTIONS_KEYS
 
-    # When this module is extended, set all configuration options to their default values
+    # When this module is extended, set all configuration options to their default values and load validation setting path
     def self.extended(base)
       base.set_default
       base.load_validation_setting
