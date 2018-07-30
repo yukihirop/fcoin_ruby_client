@@ -118,7 +118,7 @@ module Fcoin
       #  puts client.order_match_results(order_id: "kW3cRiXIGHG-cHNdter*********qfoMzbeHEQcqp4=") #=> {"status":0,"data":[{"price": "1000","fill_fees": "0.00010000000000000","filled_amount": "0.00500000000000000","side": "buy","type": "limit","created_at": 1531734385085}]}
       #
       #
-      # @see　https://developer.fcoin.com/zh.html#152112dfd6
+      # @see https://developer.fcoin.com/zh.html#152112dfd6
       # @raise [ArgumentError] If the order_id does not have.
       # @param order_id [String]
       # @return [Hash] Returns transaction record for the specified by order_id.
