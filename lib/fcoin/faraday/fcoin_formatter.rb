@@ -3,6 +3,7 @@ require_relative '../formatter'
 
 module FaradayMiddleware
   class FcoinFormatter < Faraday::Middleware
+    # Format response_env by using Fcoin::Formatter
     def call(request_env)
       @app.call(request_env).on_complete do |response_env|
         body = JSON.parse(response_env.body)
