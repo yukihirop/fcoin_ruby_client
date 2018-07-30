@@ -6,6 +6,9 @@ module Fcoin
   module Connection
     private
 
+    # @private
+    #
+    # To establish a connection using the faraday
     def connection
       options = {
         :headers => { 'Accept' => 'application/json; charset=utf-8', 'User-Agent' => user_agent, 'Content-Type' => 'application/json' },
