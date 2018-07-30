@@ -18,9 +18,9 @@ module Fcoin
 
           wss.on(:message) do |event|
             data       = JSON.parse(event.data)
-            event_name = data["type"]
+            topic = data["type"]
             formatter  = Fcoin::RealTime::Formatter.build(data)
-            call_callbacks(event_name, formatter.formatted_data)
+            call_callbacks(topic, formatter.formatted_data)
           end
 
           wss.on(:close) do |event|
@@ -47,13 +47,13 @@ module Fcoin
         self.callbacks[topic] << block if block_given?
       end
 
-      def on?(event_name)
-        event_name.present? && callbacks[event_name].present?
+      def on?(topic)
+        topic.present? && callbacks[topic].present?
       end
 
-      def call_callbacks(event_name, data={})
-        return unless on?(event_name)
-        callbacks[event_name].each do |callback|
+      def call_callbacks(topic, data={})
+        return unless on?(topic)
+        callbacks[topic].each do |callback|
           callback.call data
         end
       end
