@@ -24,7 +24,7 @@ module Fcoin
     # @option options [String] :api_key
     # @option options [String] :secret_key
     # @option options [Boolean] :skip_validation(true)
-    # @option options [String] :validation_setting_path()　validation configuration file path
+    # @option options [String] :validation_setting_path  configuration file path for validation
     def initialize(options={})
       self.merged_options = Fcoin.options.merge(options)
       Configuration::VALID_OPTIONS_KEYS.each do |key|
