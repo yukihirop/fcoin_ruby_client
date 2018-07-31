@@ -50,11 +50,11 @@ module Fcoin
     end
 
     def valid_levels
-      ::Settings.fcoin.validation.query.level
+      ::Settings.fcoin.validation.params.level
     end
 
     def valid_resolutions
-      ::Settings.fcoin.validation.query.resolution
+      ::Settings.fcoin.validation.params.resolution
     end
   end
 end

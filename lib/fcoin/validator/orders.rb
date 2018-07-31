@@ -98,15 +98,15 @@ module Fcoin
     end
 
     def valid_sides
-      ::Settings.fcoin.validation.query.side
+      ::Settings.fcoin.validation.params.side
     end
 
     def valid_types
-      ::Settings.fcoin.validation.query.type
+      ::Settings.fcoin.validation.params.type
     end
 
     def valid_states
-      ::Settings.fcoin.validation.query.states
+      ::Settings.fcoin.validation.params.states
     end
 
     def symbols
