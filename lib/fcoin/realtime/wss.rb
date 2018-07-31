@@ -6,6 +6,18 @@ require_relative 'formatter'
 module Fcoin
   module RealTime
     module WSS
+      # Subscribe to the channel that you have added to the topics
+      #
+      # @note Please subscribe to the channel by calling client.on_hello(&block) for the first time
+      #
+      # @example Subscribe to Subscribe to server time
+      #  client = Fcoin::Client.new.realtime
+      #  # client = Fcoin::RealTime::Client.new
+      #  client.on_hello do |data|
+      #    puts data
+      #  end
+      #  client.subscribe
+      #  #=> {"type"=>"hello", "ts"=>1532953247264}
       def subscribe
         EM.run do
           wss = Faye::WebSocket::Client.new(wss_endpoint)
@@ -18,9 +30,9 @@ module Fcoin
 
           wss.on(:message) do |event|
             data       = JSON.parse(event.data)
-            event_name = data["type"]
+            topic = data["type"]
             formatter  = Fcoin::RealTime::Formatter.build(data)
-            call_callbacks(event_name, formatter.formatted_data)
+            call_callbacks(topic, formatter.formatted_data)
           end
 
           wss.on(:close) do |event|
@@ -40,24 +52,37 @@ module Fcoin
       end
 
       private
-
+      # Subscribe to topic
+      #
+      # @param topic [String or Symbol] Channel you want to subscribe to
+      # @param limit [Integer]
       def on(topic, limit=nil, &block)
         self.topics << { topic: topic, limit: limit }
         self.callbacks[topic] ||= []
         self.callbacks[topic] << block if block_given?
       end
 
-      def on?(event_name)
-        event_name.present? && callbacks[event_name].present?
+      # Subscribe topic?
+      #
+      # @param topic [String] Channel you want to subscribe to
+      def on?(topic)
+        topic.present? && callbacks[topic].present?
       end
 
-      def call_callbacks(event_name, data={})
-        return unless on?(event_name)
-        callbacks[event_name].each do |callback|
+      # call callbacks
+      #
+      # @param topic [String] Channel you want to subscribe to
+      # @param data [Hash] Data sent from subscribed channel
+      def call_callbacks(topic, data={})
+        return unless on?(topic)
+        callbacks[topic].each do |callback|
           callback.call data
         end
       end
 
+      # Prepare a valid payload
+      #
+      # @param args [Hash] Parameters to send to subscribed channel
       def valid_payload(args)
         topic = args[:topic]
         limit = args[:limit]

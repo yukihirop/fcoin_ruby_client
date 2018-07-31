@@ -12,6 +12,9 @@ module Fcoin
         self.data = data
       end
 
+      # Format response data for JSON
+      #
+      # @return [Hash]
       def formatted_data
         self.data['bids'] = adjusted('bids')
         self.data['asks'] = adjusted('asks')

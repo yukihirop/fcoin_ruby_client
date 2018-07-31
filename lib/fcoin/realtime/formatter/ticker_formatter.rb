@@ -10,6 +10,9 @@ module Fcoin
         self.data = data
       end
 
+      # Format response data for JSON
+      #
+      # @return [Hash]
       def formatted_data
         # https://developer.fcoin.com/en.html
         ticker = data['ticker'].dup

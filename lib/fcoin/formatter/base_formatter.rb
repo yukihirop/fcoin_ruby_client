@@ -1,6 +1,7 @@
 module Fcoin
   class BaseFormatter
-    def formatter_data
+    # @abstract Subclass and override {#fromatted_body} to implement
+    def formatted_body
       raise 'Please be implemented in inheriting.'
     end
   end

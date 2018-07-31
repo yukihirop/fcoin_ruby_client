@@ -9,6 +9,9 @@ module Fcoin
       self.body = body
     end
 
+    # Format response body for JSON
+    #
+    # @return [Hash]
     def formatted_body
       self.body['data']['bids'] = adjusted('bids')
       self.body['data']['asks'] = adjusted('asks')
