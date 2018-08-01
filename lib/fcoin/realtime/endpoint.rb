@@ -16,7 +16,7 @@ module Fcoin
       #    puts data
       #  end
       #  client.subscribe
-      #  #=> {"ticker"=>{"latest_price"=>464.14, "most_recent_trade_vol"=>0.0046, "max_buy_price"=>464.12, "max_buy_amount"=>0.8, "min_sell_price"=>464.14, "min_sell_amount"=>0.5154, "trade_price_yesterday"=>468.09, "highest_price_today"=>471.79, "lowest_price_today"=>461.29, "btcusdt_base_vol_today"=>51512.752914829, "btcusdt_base_price_today"=>23993418.702288836}, "type"=>"ticker.ethusdt", "seq"=>100851177}
+      #  #=> {"ticker"=>{"latest_price"=>464.14, "most_recent_trade_vol"=>0.0046, "max_buy_price"=>464.12, "max_buy_amount"=>0.8, "min_sell_price"=>464.14, "min_sell_amount"=>0.5154, "trade_price_yesterday"=>468.09, "highest_price_today"=>471.79, "lowest_price_today"=>461.29, "symbol_base_vol_today"=>51512.752914829, "symbol_base_price_today"=>23993418.702288836}, "type"=>"ticker.ethusdt", "seq"=>100851177}
       #  #=> ...
       #
       #
