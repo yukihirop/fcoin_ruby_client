@@ -55,12 +55,12 @@ RSpec.describe Fcoin::OrdersValidator do
 
     context 'when order_list' do
       context 'when success' do
-        let(:params) { { symbol: :ethusdt, states: 'canceled, filled', method_name: :order_list } }
+        let(:params) { { symbol: :ethusdt, states: :canceled, method_name: :order_list } }
         it { is_expected.to eq true }
       end
 
       context 'when failure' do
-        let(:params) { { symbol: nil, states: 'canceled, filled', method_name: :order_list } }
+        let(:params) { { symbol: nil, states: :canceled, method_name: :order_list } }
         it { is_expected.to eq false }
       end
     end
@@ -129,7 +129,7 @@ RSpec.describe Fcoin::OrdersValidator do
 
     context 'when order_list' do
       context 'when success' do
-        let(:params) { { symbol: :ethusdt, states: 'canceled, filled', method_name: :order_list } }
+        let(:params) { { symbol: :ethusdt, states: :canceled, method_name: :order_list } }
         it { is_expected.to be_blank }
       end
 
