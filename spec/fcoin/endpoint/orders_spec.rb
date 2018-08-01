@@ -28,7 +28,7 @@ RSpec.describe Fcoin::Endpoint::Orders do
         context 'when side and type and amount is not valid' do
           subject { client.create_order(symbol: :ethusdt, side: :invalid_side, type: :invalid_limit, price: 1000, amount: 0.0001) }
           it 'should be raise error' do
-            expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:side=>"side is invalid_side. side is not included in the [buy, sell].", :type=>"type is invalid_limit. type is not included in the [limit, market].", :amount=>"amount is 0.0001. amount is not between 0.001 and 10000."}')
+            expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:type=>"type is invalid_limit. type is not included in the [limit, market]."}')
           end
 
           context 'when skip validation' , vcr: { cassette_name: 'orders/create_order_auth_incorrect_skip_validation', record: :new_episodes } do
