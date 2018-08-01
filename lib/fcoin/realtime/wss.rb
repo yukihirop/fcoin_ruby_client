@@ -31,7 +31,7 @@ module Fcoin
           wss.on(:message) do |event|
             data       = JSON.parse(event.data)
             topic = data["type"]
-            formatter  = Fcoin::RealTime::Formatter.build(data)
+            formatter  = Fcoin::RealTime::Formatter.new(data)
             call_callbacks(topic, formatter.formatted_data)
           end
 
