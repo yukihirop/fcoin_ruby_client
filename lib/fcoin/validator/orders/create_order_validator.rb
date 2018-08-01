@@ -1,7 +1,7 @@
 require_relative 'create_order_limit_validator'
 require_relative 'create_order_market_validator'
 require_relative 'base_validator'
-require_relative '../utility'
+require_relative '../validator_utility'
 
 module Fcoin
   module Orders

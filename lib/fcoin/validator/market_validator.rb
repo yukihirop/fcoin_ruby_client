@@ -1,4 +1,4 @@
-require_relative 'utility'
+require_relative 'validator_utility'
 
 module Fcoin
   class MarketValidator
