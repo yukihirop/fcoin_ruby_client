@@ -7,7 +7,7 @@ module FaradayMiddleware
     def call(request_env)
       @app.call(request_env).on_complete do |response_env|
         body = JSON.parse(response_env.body)
-        formatter = Fcoin::Formatter.build(body)
+        formatter = Fcoin::Formatter.new(body)
         response_env.body = formatter.formatted_body
       end
     end
