@@ -1,6 +1,5 @@
 require_relative 'base_validator'
 require_relative '../utility'
-require 'pry'
 
 module Fcoin
   module Orders
