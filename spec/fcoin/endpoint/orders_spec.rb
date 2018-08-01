@@ -81,6 +81,27 @@ RSpec.describe Fcoin::Endpoint::Orders do
         expect(first_data['state']).to          eq "canceled"
         expect(body['status']).to               eq 0
       end
+
+      context 'when states is kind of String' do
+        let(:body)   { client.order_list(symbol: :ethusdt, states: 'canceled', page_before: nil, page_after: nil, per_page: 20) }
+        let(:first_data) { body['data'].first }
+
+        it 'response data should be got' do
+          expect(first_data['id']).to             eq "L7rbALEIoI0ymo3uOXBF4gT4BlyTxgHhGoZjvptIv2U="
+          expect(first_data['symbol']).to         eq "ethusdt"
+          expect(first_data['amount']).to         eq "0.001000000000000000"
+          expect(first_data['price']).to          eq "1000.000000000000000000"
+          expect(first_data['created_at']).to     eq 1531714218130
+          expect(first_data['type']).to           eq "limit"
+          expect(first_data['side']).to           eq "sell"
+          expect(first_data['filled_amount']).to  eq "0.000000000000000000"
+          expect(first_data['executed_value']).to eq "0.000000000000000000"
+          expect(first_data['fill_fees']).to      eq "0.000000000000000000"
+          expect(first_data['source']).to         eq "api"
+          expect(first_data['state']).to          eq "canceled"
+          expect(body['status']).to               eq 0
+        end
+      end
     end
 
     context 'when input incorrect' do
