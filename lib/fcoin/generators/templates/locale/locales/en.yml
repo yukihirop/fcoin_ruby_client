@@ -65,8 +65,8 @@ en:
             trade_price_yesterday: Trade Price at Yesterday
             highest_price_today: Highest Price at Today
             lowest_price_today: Lowest Price at Today
-            btcusdt_base_vol_today: Base Volume %{coin} of %{symbol}
-            btcusdt_base_price_today: Base Price %{coin} of %{symbol}
+            symbol_base_vol_today: Base Volume %{coin} of %{symbol}
+            symbol_base_price_today: Base Price %{coin} of %{symbol}
         market/trades: Trade Information
         market/trades/data:
           amount: Amount
@@ -162,8 +162,8 @@ en:
           trade_price_yesterday: Trade Price at Yesterday
           highest_price_today: Highest Price at Today
           lowest_price_today: Lowest Price at Today
-          btcusdt_base_vol_today: Base Volume %{coin} of %{symbol}
-          btcusdt_base_price_today: Base Price %{coin} of %{symbol}
+          symbol_base_vol_today: Base Volume %{coin} of %{symbol}
+          symbol_base_price_today: Base Price %{coin} of %{symbol}
           type: Subscribe Channel
         topics: Topics (RealTime)
         topics/data:

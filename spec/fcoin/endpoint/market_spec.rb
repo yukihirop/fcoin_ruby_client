@@ -15,8 +15,8 @@ RSpec.describe Fcoin::Endpoint::Market do
       let(:body) { client.market_ticker(symbol: :fteth) }
       
       it 'response data should be got' do
-        expect(body['data']['ticker']['btcusdt_base_price_today']).to eq 256708.07246276314
-        expect(body['data']['ticker']['btcusdt_base_vol_today']).to   eq 511357160.8024736
+        expect(body['data']['ticker']['symbol_base_price_today']).to eq 256708.07246276314
+        expect(body['data']['ticker']['symbol_base_vol_today']).to   eq 511357160.8024736
         expect(body['data']['ticker']['highest_price_today']).to      eq 0.00052632
         expect(body['data']['ticker']['latest_price']).to             eq 0.00047
         expect(body['data']['ticker']['lowest_price_today']).to       eq 0.0004507

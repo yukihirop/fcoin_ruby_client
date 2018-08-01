@@ -65,8 +65,8 @@ en:
             trade_price_yesterday: 24時間前の取引価格
             highest_price_today: 本日の高値
             lowest_price_today: 本日の低値
-            btcusdt_base_vol_today: 本日の%{symbol}板の%{coin}の出来高
-            btcusdt_base_price_today: 本日の%{symbol}板の%{coin}の取引額
+            symbol_base_vol_today: 本日の%{symbol}板の%{coin}の出来高
+            symbol_base_price_today: 本日の%{symbol}板の%{coin}の取引額
         market/trades: 取引
         market/trades/data:
           amount: 数量
@@ -162,8 +162,8 @@ en:
           trade_price_yesterday: 24時間前の取引価格
           highest_price_today: 本日の高値
           lowest_price_today: 本日の低値
-          btcusdt_base_vol_today: 本日の%{symbol}板の%{coin}の出来高
-          btcusdt_base_price_today: 本日の%{symbol}板の%{coin}の取引額
+          symbol_base_vol_today: 本日の%{symbol}板の%{coin}の出来高
+          symbol_base_price_today: 本日の%{symbol}板の%{coin}の取引額
           type: 購読チャンネル
         topics: 購読チャンネル一覧 (リアルタム)
         topics/data:

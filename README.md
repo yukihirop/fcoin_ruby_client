@@ -40,7 +40,7 @@ client = Fcoin::Client.new
 
 # For example, get ticker information of ethusdt
 puts client.market_ticker(symbol: :ethusdt)
-#=> {"status"=>0, "data"=>{"ticker"=>{"latest_price"=>469.43, "most_recent_trade_vol"=>0.002, "max_buy_price"=>469.43, "max_buy_amount"=>7.6318, "min_sell_price"=>469.44, "min_sell_amount"=>0.0011, "trade_price_yesterday"=>468.75, "highest_price_today"=>472.0, "lowest_price_today"=>461.76, "btcusdt_base_vol_today"=>44442.419672207, "btcusdt_base_price_today"=>20784202.592831347}, "type"=>"ticker.ethusdt", "seq"=>100521295}}
+#=> {"status"=>0, "data"=>{"ticker"=>{"latest_price"=>469.43, "most_recent_trade_vol"=>0.002, "max_buy_price"=>469.43, "max_buy_amount"=>7.6318, "min_sell_price"=>469.44, "min_sell_amount"=>0.0011, "trade_price_yesterday"=>468.75, "highest_price_today"=>472.0, "lowest_price_today"=>461.76, "symbol_base_vol_today"=>44442.419672207, "symbol_base_price_today"=>20784202.592831347}, "type"=>"ticker.ethusdt", "seq"=>100521295}}
 
 ```
 

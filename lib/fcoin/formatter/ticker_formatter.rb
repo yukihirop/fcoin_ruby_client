@@ -25,8 +25,8 @@ module Fcoin
                            "trade_price_yesterday" => ticker[6],
                            "highest_price_today" => ticker[7],
                            "lowest_price_today" => ticker[8],
-                           "btcusdt_base_vol_today" => ticker[9],
-                           "btcusdt_base_price_today" => ticker[10]
+                           "symbol_base_vol_today" => ticker[9],
+                           "symbol_base_price_today" => ticker[10]
                        }
       body
     end

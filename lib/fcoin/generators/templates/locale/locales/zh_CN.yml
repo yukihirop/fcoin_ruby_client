@@ -65,8 +65,8 @@ zh_CN:
             trade_price_yesterday: 24小时前成交价
             highest_price_today: 24小时内最高价
             lowest_price_today: 24小时内最低价
-            btcusdt_base_vol_today: 24小时内基准货币成交量, %{symbol} 中 %{coin} 的量
-            btcusdt_base_price_today: 24小时内计价货币成交量, %{symbol} 中 %{coin} 的量
+            symbol_base_vol_today: 24小时内基准货币成交量, %{symbol} 中 %{coin} 的量
+            symbol_base_price_today: 24小时内计价货币成交量, %{symbol} 中 %{coin} 的量
         market/trades: 成交
         market/trades/data:
           amount: 数量
@@ -162,8 +162,8 @@ zh_CN:
           trade_price_yesterday: 24小时前成交价
           highest_price_today: 24小时内最高价
           lowest_price_today: 24小时内最低价
-          btcusdt_base_vol_today: 24小时内基准货币成交量, %{symbol} 中 %{coin} 的量
-          btcusdt_base_price_today: 24小时内计价货币成交量, %{symbol} 中 %{coin} 的量
+          symbol_base_vol_today: 24小时内基准货币成交量, %{symbol} 中 %{coin} 的量
+          symbol_base_price_today: 24小时内计价货币成交量, %{symbol} 中 %{coin} 的量
           type: 订阅频道
         topics: 订阅频道列表 (实时)
         topics/data:
