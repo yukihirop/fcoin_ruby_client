@@ -7,7 +7,16 @@ module Fcoin
       self.body = body
     end
 
-    def self.build(body)
+    # Format body
+    def formatted_body
+      formatter.present? ? formatter.formatted_body : body
+    end
+
+    private
+
+    attr_accessor :body
+
+    def formatter
       if use_formatter?(body)
         case body['data']['type']
         when /ticker/
@@ -15,22 +24,14 @@ module Fcoin
         when /depth/
           DepthFormatter.new(body)
         else
-          new(body)
+          nil
         end
       else
-        new(body)
+        nil
       end
     end
 
-    def formatted_body
-      body
-    end
-
-    private
-
-    attr_accessor :body
-
-    def self.use_formatter?(body)
+    def use_formatter?(body)
       !(body['data'].nil? || !body['data'].is_a?(Hash) || body['data']['type'].nil?)
     end
   end

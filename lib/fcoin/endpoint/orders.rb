@@ -28,7 +28,7 @@ module Fcoin
       # @return [Hash] Returns receipt contains order_id.
       def create_order(symbol:, side:, type:, price:, amount:)
         payload = { symbol: symbol, side: side, type: type, price: price, amount: amount }
-        validator = Fcoin::Validator.build(payload.merge(method_name: __method__))
+        validator = Fcoin::Validator.new(payload.merge(method_name: __method__))
         if skip_validation || validator.valid?
           valid_payload = sort_payload(payload)
           post('orders', true, valid_payload)
@@ -59,7 +59,7 @@ module Fcoin
       # @return [Hash] Returns order list.
       def order_list(symbol:, states:, page_before: nil, page_after: nil, per_page: 20)
         params = { symbol: symbol, states: states.to_s, before: page_before, after: page_after, limit: per_page }
-        validator = Fcoin::Validator.build(params.merge(method_name: __method__))
+        validator = Fcoin::Validator.new(params.merge(method_name: __method__))
         if skip_validation || validator.valid?
           valid_params = sort_params(params)
           get('orders', true, valid_params)

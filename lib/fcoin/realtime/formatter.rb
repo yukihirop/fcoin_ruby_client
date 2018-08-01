@@ -8,7 +8,16 @@ module Fcoin
         self.data = data
       end
 
-      def self.build(data)
+      # Format data
+      def formatted_data
+        formatter.present? ? formatter.formatted_data : data
+      end
+
+      private
+
+      attr_accessor :data
+
+      def formatter
         if use_formatter?(data)
           case data["type"]
           when /ticker/
@@ -16,22 +25,14 @@ module Fcoin
           when /depth/
             DepthFormatter.new(data)
           else
-            new(data)
+            nil
           end
         else
-          new(data)
+          nil
         end
       end
 
-      def formatted_data
-        data
-      end
-
-      private
-
-      attr_accessor :data
-
-      def self.use_formatter?(data)
+      def use_formatter?(data)
         data['type'].present?
       end
     end

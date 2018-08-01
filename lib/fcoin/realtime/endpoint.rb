@@ -50,7 +50,7 @@ module Fcoin
       # @param level [String or Symbol] Level of depth chart. level must be included in [L20, L40, full]
       # @yieldreturn Process block arguments
       def on_depth(symbol:, level:, &block)
-        validator = Fcoin::Validator.build(symbol: symbol, level: level, method_name: __method__)
+        validator = Fcoin::Validator.new(symbol: symbol, level: level, method_name: __method__)
         if skip_validation || validator.valid?
           on("depth.#{level}.#{symbol}", nil, &block)
         else
@@ -108,7 +108,7 @@ module Fcoin
       # @param limit [Integer]
       # @yieldreturn Process block arguments
       def on_candle(symbol:, resolution:, limit: 20, &block)
-        validator = Fcoin::Validator.build(symbol: symbol, resolution: resolution, method_name: __method__)
+        validator = Fcoin::Validator.new(symbol: symbol, resolution: resolution, method_name: __method__)
         if skip_validation || validator.valid?
           on("candle.#{resolution}.#{symbol}", limit, &block)
         else
