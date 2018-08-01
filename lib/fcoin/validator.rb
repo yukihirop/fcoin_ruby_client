@@ -1,5 +1,5 @@
-require_relative 'validator/market'
-require_relative 'validator/orders'
+require_relative 'validator/market_validator'
+require_relative 'validator/orders_validator'
 
 # Scope Fcoin::API
 module Fcoin
