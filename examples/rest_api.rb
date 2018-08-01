@@ -33,6 +33,8 @@ puts client.accounts_balance
 ## orders
 # client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001)
 puts client.order_list(symbol: :ethusdt, states: :canceled, page_before: nil, page_after: nil, per_page: 20)
+# puts client.order_list(symbol: :ethusdt, states: 'canceled', page_before: nil, page_after: nil, per_page: 20)
+
 
 puts client.order(order_id: "L7rbALEIoI0ymo3uOXBF4gT4Bl********jvptIv2U=")
 # alias method

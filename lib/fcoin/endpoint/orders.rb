@@ -52,13 +52,13 @@ module Fcoin
       # @raise [ArgumentError] If the symbol or states or per_page does not have.
       # @raise [InvalidValueError] If symbol or states or per_page is invalid.
       # @param symbol [String or Symbol] Transaction of pair.
-      # @param states [Stirng] Order states. states must be incldued in [submitted, partial_filled, canceled, partial_canceled, filled, pending_cancel]
+      # @param states [String or Symbol] Order states. states must be incldued in [submitted, partial_filled, canceled, partial_canceled, filled, pending_cancel]
       # @param page_before [Integer] Query order before page number.
       # @param page_after [Integer] Query order after page number.
       # @param per_page [Integer] Order quantity per page. default is 20.
       # @return [Hash] Returns order list.
       def order_list(symbol:, states:, page_before: nil, page_after: nil, per_page: 20)
-        params = { symbol: symbol, states: states, before: page_before, after: page_after, limit: per_page }
+        params = { symbol: symbol, states: states.to_s, before: page_before, after: page_after, limit: per_page }
         validator = Fcoin::Validator.build(params.merge(method_name: __method__))
         if skip_validation || validator.valid?
           valid_params = sort_params(params)
