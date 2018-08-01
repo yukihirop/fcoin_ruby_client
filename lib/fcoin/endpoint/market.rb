@@ -38,7 +38,7 @@ module Fcoin
       # @param level [String or Symbol] Level of depth chart. level must be included in [L20, L40, full].
       # @return [Hash] Returns depth info.
       def market_depth(symbol:, level:)
-        validator = Fcoin::Validator.build(level: level, method_name: __method__)
+        validator = Fcoin::Validator.new(level: level, method_name: __method__)
         if skip_validation || validator.valid?
           get("market/depth/#{level}/#{symbol}", false)
         else
@@ -79,7 +79,7 @@ module Fcoin
       # @param resolution [String or Symbol] period of candles chart. resolution must be included in [M1, M3, M5, M15, M30, H1, H4, H6, D1, W1, MN].
       # @return [Hash] Returns candles info.
       def market_candles(symbol:, resolution:)
-        validator = Fcoin::Validator.build(resolution: resolution, method_name: __method__)
+        validator = Fcoin::Validator.new(resolution: resolution, method_name: __method__)
         if skip_validation || validator.valid?
           get("market/candles/#{resolution}/#{symbol}", false)
         else
