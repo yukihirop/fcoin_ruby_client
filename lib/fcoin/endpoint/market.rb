@@ -17,7 +17,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#ticker
       # @raise [ArgumentError] If the symbol does not have.
       # @param symbol [String or Symbol] a text string with the name of the current financial instrument.
-      # @return [Hash] Returns ticker info.
+      # @return [Hash or JSON] Returns ticker info.
       def market_ticker(symbol:)
         get("market/ticker/#{symbol}", false)
       end
@@ -36,7 +36,7 @@ module Fcoin
       # @raise [InvalidValueError] If symbol or level is invalid.
       # @param symbol [String or Symbol] a text string with the name of the current financial instrument.
       # @param level [String or Symbol] Level of depth chart. level must be included in [L20, L40, full].
-      # @return [Hash] Returns depth info.
+      # @return [Hash or JSON] Returns depth info.
       def market_depth(symbol:, level:)
         validator = Fcoin::Validator.new(level: level, method_name: __method__)
         if skip_validation || validator.valid?
@@ -58,7 +58,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#6477a1394e
       # @raise [ArgumentError] If the symbol does not have.
       # @param symbol [String] a text string with the name of the current financial instrument.
-      # @return [Hash] Returns trades info.
+      # @return [Hash or JSON] Returns trades info.
       def market_trades(symbol:)
         get("market/trades/#{symbol}", false)
       end
@@ -77,7 +77,7 @@ module Fcoin
       # @raise [InvalidValueError] If symbol or resolution is invalid.
       # @param symbol [String or Symbol] a text string with the name of the current financial instrument.
       # @param resolution [String or Symbol] period of candles chart. resolution must be included in [M1, M3, M5, M15, M30, H1, H4, H6, D1, W1, MN].
-      # @return [Hash] Returns candles info.
+      # @return [Hash or JSON] Returns candles info.
       def market_candles(symbol:, resolution:)
         validator = Fcoin::Validator.new(resolution: resolution, method_name: __method__)
         if skip_validation || validator.valid?

@@ -14,7 +14,7 @@ module Fcoin
       #
       #
       # @see https://developer.fcoin.com/zh.html#486f6037ed
-      # @return [Hash]
+      # @return [Hash or JSON]
       def accounts_balance
         get('accounts/balance')
       end
