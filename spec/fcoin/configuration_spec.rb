@@ -24,7 +24,8 @@ RSpec.describe Fcoin::Configuration do
         :ca_file                 => "#{ca_path}/ca-certificates.crt",
         :middlewares             => [],
         :skip_validation         => true,
-        :validation_setting_path => "#{root_path}/lib/fcoin/config/custom_settings.yml"
+        :validation_setting_path => "#{root_path}/lib/fcoin/config/custom_settings.yml",
+        :format_type             => :hash
       }
     end
 

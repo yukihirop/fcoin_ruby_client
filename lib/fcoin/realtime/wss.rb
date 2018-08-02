@@ -76,7 +76,22 @@ module Fcoin
       def call_callbacks(topic, data={})
         return unless on?(topic)
         callbacks[topic].each do |callback|
-          callback.call data
+          callback.call formatted(data)
+        end
+      end
+
+      # change the output format of the body
+      #
+      # @param data [Hash]
+      # @return [Hash or JSON]
+      def formatted(data)
+        case format_type
+        when :json
+          data.to_json
+        when :hash
+          data
+        else
+          raise "format_type is #{format_type}. format_type must be included in [:json, :hash]."
         end
       end
 

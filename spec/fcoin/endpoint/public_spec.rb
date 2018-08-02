@@ -10,6 +10,23 @@ RSpec.describe Fcoin::Endpoint::Public do
       expect(body['data']).to   eq 1531562028166
       expect(body['status']).to eq 0
     end
+
+    context 'when format_type is :json' do
+      before { allow(client).to receive(:format_type).and_return(:json) }
+
+      it 'response data should be got' do
+        expect(body).to eq "{\"status\":0,\"data\":1531562028166}"
+      end
+    end
+
+    context 'when format_type is unsupported' do
+      subject { client.public_server_time }
+      before { allow(client).to receive(:format_type).and_return(:unsupported) }
+
+      it 'should raise error' do
+        expect { subject }.to raise_error(RuntimeError, 'format_type is unsupported. format_type must be included in [:json, :hash].')
+      end
+    end
   end
 
   describe '#public_currencies', vcr: { cassette_name: 'public/currencies', record: :new_episodes } do
