@@ -25,7 +25,7 @@ module Fcoin
       # @param type [String or Symbol] Order type.
       # @param price [Float]
       # @param amount [Float]
-      # @return [Hash] Returns receipt contains order_id.
+      # @return [Hash or JSON] Returns receipt contains order_id.
       def create_order(symbol:, side:, type:, price:, amount:)
         payload = { symbol: symbol, side: side, type: type, price: price, amount: amount }
         validator = Fcoin::Validator.new(payload.merge(method_name: __method__))
@@ -56,7 +56,7 @@ module Fcoin
       # @param page_before [Integer] Query order before page number.
       # @param page_after [Integer] Query order after page number.
       # @param per_page [Integer] Order quantity per page. default is 20.
-      # @return [Hash] Returns order list.
+      # @return [Hash or JSON] Returns order list.
       def order_list(symbol:, states:, page_before: nil, page_after: nil, per_page: 20)
         params = { symbol: symbol, states: states.to_s, before: page_before, after: page_after, limit: per_page }
         validator = Fcoin::Validator.new(params.merge(method_name: __method__))
@@ -82,7 +82,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#5faf03be01
       # @raise [ArgumentError] If the order_id does not have.
       # @param order_id [String]
-      # @return [Hash] Returns order specified by order_id.
+      # @return [Hash or JSON] Returns order specified by order_id.
       def reference_order(order_id:)
         get("orders/#{order_id}")
       end
@@ -102,7 +102,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#299126e3bf
       # @raise [ArgumentError] If the order_id does not have.
       # @param order_id [String]
-      # @return [Hash]
+      # @return [Hash or JSON]
       def cancel_order(order_id:)
         post("orders/#{order_id}/submit-cancel")
       end
@@ -121,7 +121,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#152112dfd6
       # @raise [ArgumentError] If the order_id does not have.
       # @param order_id [String]
-      # @return [Hash] Returns transaction record for the specified by order_id.
+      # @return [Hash or JSON] Returns transaction record for the specified by order_id.
       def order_match_results(order_id:)
         get("orders/#{order_id}/match-results")
       end

@@ -52,7 +52,22 @@ module Fcoin
         end
       end
 
-      return response.body
+      return formatted(response.body)
+    end
+
+    # change the output format of the body
+    #
+    # @param body [Hash]
+    # @return [Hash or JSON]
+    def formatted(body)
+      case format_type
+      when :json
+        body.to_json
+      when :hash
+        body
+      else
+        raise "format_type is #{format_type}. format_type must be included in [:json, :hash]."
+      end
     end
   end
 end

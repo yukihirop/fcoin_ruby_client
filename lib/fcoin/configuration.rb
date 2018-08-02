@@ -26,6 +26,8 @@ module Fcoin
     DEFAULT_SECRET_KEY              = 'Fcoin API Secret Key'
     DEFAULT_SKIP_VALIDATION         = true
     DEFAULT_VALIDATION_SETTING_PATH = File.expand_path('../config/custom_settings.yml',__FILE__)
+    # support ruby Hash or JSON. default is ruby Hash
+    DEFAULT_FORMAT_TYPE             = :hash
 
     # An array of valid keys in the options hash when configuring a Fcoin::API
     VALID_OPTIONS_KEYS = [
@@ -40,7 +42,8 @@ module Fcoin
       :ca_file,
       :middlewares,
       :skip_validation,
-      :validation_setting_path
+      :validation_setting_path,
+      :format_type
     ].freeze
 
     attr_accessor *VALID_OPTIONS_KEYS
@@ -86,6 +89,7 @@ module Fcoin
       self.middlewares             = DEFAULT_MIDDLEWARES
       self.skip_validation         = DEFAULT_SKIP_VALIDATION
       self.validation_setting_path = DEFAULT_VALIDATION_SETTING_PATH
+      self.format_type             = DEFAULT_FORMAT_TYPE
     end
   end
 end

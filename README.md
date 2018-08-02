@@ -188,6 +188,7 @@ we explain the parameters that can be set.
 |secret_key|FCOIN API Secret Key. Please see [FCOIN document](https://developer.fcoin.com/zh.html)|
 |skip_validation|Setting it to true will skip the validation. default is `true`|
 |validation_setting_path|Setting file path for validation.|
+|format_type|Output format. default is `:hash` (This mean `ruby Hash`)|
 
 
 ## Development

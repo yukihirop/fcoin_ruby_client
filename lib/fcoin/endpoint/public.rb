@@ -12,7 +12,7 @@ module Fcoin
       #
       #
       # @see https://developer.fcoin.com/zh.html#8aa898cda7
-      # @return [Hash]
+      # @return [Hash or JSON]
       def public_server_time
         get('public/server-time', false)
       end
@@ -27,7 +27,7 @@ module Fcoin
       #
       #
       # @see https://developer.fcoin.com/zh.html#0fd2e492e6
-      # @return [Hash]
+      # @return [Hash or JSON]
       def public_currencies
         get('public/currencies', false)
       end
@@ -42,7 +42,7 @@ module Fcoin
       #
       #
       # @see https://developer.fcoin.com/zh.html#a266e284f4
-      # @return [Hash]
+      # @return [Hash or JSON]
       def public_symbols
         get('public/symbols', false)
       end
