@@ -16,7 +16,7 @@ module Fcoin
       #
       # @see https://developer.fcoin.com/zh.html#ticker
       # @raise [ArgumentError] If the symbol does not have.
-      # @param symbol [String or Symbol] a text string with the name of the current financial instrument.
+      # @param symbol [String or Symbol] Transaction pairs
       # @return [Hash or JSON] Returns ticker info.
       def market_ticker(symbol:)
         get("market/ticker/#{symbol}", false)
@@ -34,7 +34,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#50f4407ea4
       # @raise [ArgumentError] If the symbol or level does not have.
       # @raise [InvalidValueError] If symbol or level is invalid.
-      # @param symbol [String or Symbol] a text string with the name of the current financial instrument.
+      # @param symbol [String or Symbol] Transaction pairs
       # @param level [String or Symbol] Level of depth chart. level must be included in [L20, L40, full].
       # @return [Hash or JSON] Returns depth info.
       def market_depth(symbol:, level:)
@@ -57,7 +57,7 @@ module Fcoin
       #
       # @see https://developer.fcoin.com/zh.html#6477a1394e
       # @raise [ArgumentError] If the symbol does not have.
-      # @param symbol [String] a text string with the name of the current financial instrument.
+      # @param symbol [String or Symbol] Transaction pairs
       # @return [Hash or JSON] Returns trades info.
       def market_trades(symbol:)
         get("market/trades/#{symbol}", false)
@@ -75,7 +75,7 @@ module Fcoin
       # @see https://developer.fcoin.com/zh.html#candle
       # @raise [ArgumentError] If the symbol or resolution does not have.
       # @raise [InvalidValueError] If symbol or resolution is invalid.
-      # @param symbol [String or Symbol] a text string with the name of the current financial instrument.
+      # @param symbol [String or Symbol] Transaction pairs
       # @param resolution [String or Symbol] period of candles chart. resolution must be included in [M1, M3, M5, M15, M30, H1, H4, H6, D1, W1, MN].
       # @return [Hash or JSON] Returns candles info.
       def market_candles(symbol:, resolution:)
