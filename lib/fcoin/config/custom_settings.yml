@@ -146,12 +146,12 @@ fcoin:
           gpm:
         buy:
           mainboard_A:
-            - { symbol: 'btcusdt', amount: { min: 1,     max: 10000 } }
-            - { symbol: 'ethusdt', amount: { min: 0.001, max: 10000 } }
-            - { symbol: 'bchusdt', amount: { min: 0.001, max: 5000 } }
-            - { symbol: 'ltcusdt', amount: { min: 0.001, max: 40000 } }
-            - { symbol: 'etcusdt', amount: { min: 0.001, max: 400000 } }
-            - { symbol: 'xrpusdt', amount: { min: 1,     max: 10000 } }
+            - { symbol: 'btcusdt', total: { min: 1,     max: 10000 } }
+            - { symbol: 'ethusdt', total: { min: 0.001, max: 10000 } }
+            - { symbol: 'bchusdt', total: { min: 0.001, max: 5000 } }
+            - { symbol: 'ltcusdt', total: { min: 0.001, max: 40000 } }
+            - { symbol: 'etcusdt', total: { min: 0.001, max: 400000 } }
+            - { symbol: 'xrpusdt', total: { min: 1,     max: 10000 } }
           mainboard_B:
           gpm:
       invalid:
