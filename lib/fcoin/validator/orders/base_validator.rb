@@ -6,12 +6,14 @@ module Fcoin
       # @option params :symbol [String or Symbol] Transaction pair
       # @option params :side [String or Symbol] Direction of the transaction
       # @option params :price [Float]
+      # @option params :total [Float]
       # @option params :amount [Float]
       # @option params :states [String] Order state
       def initialize(params)
         self.symbol      = params[:symbol]
         self.side        = params[:side]
         self.price       = params[:price]
+        self.total       = params[:total]
         self.amount      = params[:amount]
         self.states      = params[:states]
       end
@@ -30,7 +32,7 @@ module Fcoin
 
       private
 
-      attr_accessor :symbol, :side, :type, :price, :amount, :states
+      attr_accessor :symbol, :side, :type, :price, :total, :amount, :states
 
       def valid_symbol?
         symbol.present?
@@ -51,6 +53,10 @@ module Fcoin
 
       def valid_price?
         price.present? && price.between?(min(:price), max(:price))
+      end
+
+      def valid_total?
+        total.present? && total.between?(min(:total), max(:total))
       end
 
       def valid_amount?
