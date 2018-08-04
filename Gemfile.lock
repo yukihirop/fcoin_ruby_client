@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fcoin_ruby_client (0.1.1)
+    fcoin_ruby_client (0.1.2)
       activesupport (~> 5.2.0)
       config (~> 1.7.0)
       faraday (~> 0.15.2)
