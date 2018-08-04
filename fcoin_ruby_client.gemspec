@@ -36,6 +36,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "yard"
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "onkcop"
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "coveralls"
 
   spec.add_runtime_dependency "faraday"
   spec.add_runtime_dependency "faraday_middleware"
