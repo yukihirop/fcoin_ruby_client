@@ -24,18 +24,18 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry"
-  spec.add_development_dependency "webmock"
-  spec.add_development_dependency "vcr"
-  spec.add_development_dependency "yard"
-  spec.add_development_dependency "rubocop"
-  spec.add_development_dependency "onkcop"
-  spec.add_development_dependency "simplecov"
-  spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "webmock", '~> 3.4.2'
+  spec.add_development_dependency "vcr", '~>4.0.0'
+  spec.add_development_dependency "yard", '~>0.9.15'
+  spec.add_development_dependency "rubocop", '~>0.53.0'
+  spec.add_development_dependency "onkcop", '~>0.53.0.0'
+  spec.add_development_dependency "simplecov", '~>0.16.1'
+  spec.add_development_dependency "coveralls", '0.7.1'
 
-  spec.add_runtime_dependency "faraday"
-  spec.add_runtime_dependency "faraday_middleware"
-  spec.add_runtime_dependency "activesupport"
-  spec.add_runtime_dependency "faye-websocket"
-  spec.add_runtime_dependency "config"
-  spec.add_runtime_dependency "thor"
+  spec.add_runtime_dependency "faraday", '~>0.15.2'
+  spec.add_runtime_dependency "faraday_middleware", '~>0.12.2'
+  spec.add_runtime_dependency "activesupport", '~>5.2.0'
+  spec.add_runtime_dependency "faye-websocket", '~>0.10.7'
+  spec.add_runtime_dependency "config",'~>1.7.0'
+  spec.add_runtime_dependency "thor", '~>0.20.0'
 end

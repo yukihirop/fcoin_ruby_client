@@ -1,3 +1,8 @@
+## v0.1.2
+release (2018/08/04)
+
+- Specify dependency gem version
+
 ## v0.1.1
 release (2018/08/04)
 
