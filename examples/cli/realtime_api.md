@@ -4,16 +4,27 @@
 ```
 $ ./bin/fcoin
 Commands:
-  fcoin account          # Get Account Information
-  fcoin help [COMMAND]   # Describe available commands or one specific command
-  fcoin locale init      # Create locale file. For example use in rails project
-  fcoin market           # Get Market Information
-  fcoin order            # Operate Order
-  fcoin public           # Get Public Information
-  fcoin subscribe        # Subscribe topic
-  fcoin validation init  # Create validation setting file
-  fcoin version          # Print Version
+  fcoin account         # Get Account Information
+  fcoin help [COMMAND]  # Describe available commands or one specific command
+  fcoin locale          # Locale Setting
+  fcoin market          # Get Market Information
+  fcoin order           # Operate Order
+  fcoin public          # Get Public Information
+  fcoin subscribe       # Subscribe topic
+  fcoin validation      # Validation Setting
+  fcoin version         # Print Version
 
+```
+
+__If you want to validate__
+
+```bash
+$ # For more settings
+$ # @see https://github.com/yukihirop/fcoin_ruby_client#validation
+$ ./bin/fcoin validation init --path ./config
+      create
+      create  my_settings.yml
+$ export VALIDATION_SETTING_PATH='/path/to/your/my_settings.yml'
 ```
 
 ## Subscribe

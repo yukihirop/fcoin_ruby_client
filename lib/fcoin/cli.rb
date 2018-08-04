@@ -64,8 +64,8 @@ module Fcoin
     # Register as command of cli
     #
     # @see https://stackoverflow.com/questions/5663519/namespacing-thor-commands-in-a-standalone-ruby-executable
-    register(Fcoin::ValidationTask,         'validation', 'validation init', 'Create validation setting file')
-    register(Fcoin::LocaleTask,             'locale',     'locale init',     'Create locale file. For example use in rails project')
+    register(Fcoin::ValidationTask,         'validation', 'validation',      'Validation Setting')
+    register(Fcoin::LocaleTask,             'locale',     'locale',          'Locale Setting')
     # REST API
     register(Fcoin::EndPoint::AccountsTask, 'account',    'account',         'Get Account Information')
     register(Fcoin::EndPoint::MarketTask,   'market',     'market',          'Get Market Information')
