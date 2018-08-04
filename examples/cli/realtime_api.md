@@ -1,10 +1,10 @@
 # RealTime API CLI
 
 In development, please use the `./exe/fcoin`.<br>
-In Actual, please use the `bundle exec fcoin`.
+In Actual, please use the `fcoin`.
 
 ## All
-```
+```bash
 $ ./exe/fcoin
 Commands:
   fcoin account         # Get Account Information
