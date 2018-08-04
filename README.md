@@ -1,4 +1,8 @@
 # FcoinRubyClient
+[![Build Status](https://travis-ci.org/yukihirop/fcoin_ruby_client.svg?branch=master)](https://travis-ci.org/yukihirop/fcoin_ruby_client)
+[![Coverage Status](https://coveralls.io/repos/github/yukihirop/fcoin_ruby_client/badge.svg?branch=master)](https://coveralls.io/github/yukihirop/fcoin_ruby_client?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/098a36b2ed22f3a9e627/maintainability)](https://codeclimate.com/github/yukihirop/fcoin_ruby_client/maintainability)
+
 This gem provides a ruby ​​client of [FCOIN](https://www.fcoin.com/) REST API and WebSocket API.
 
 Very easy to use.
