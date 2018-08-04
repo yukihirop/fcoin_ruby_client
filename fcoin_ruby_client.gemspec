@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "fcoin_ruby_client"
   spec.version       = Fcoin::VERSION
   spec.authors       = ["yukihirop"]
-  spec.email         = ["te108186@gmail.com"]
+  spec.email         = ["yfsidejob@gmail.com"]
 
   spec.summary       = %q{A Ruby wrapper for Fcoin API}
   spec.description   = %q{A Ruby wrapper for Fcoin API}
