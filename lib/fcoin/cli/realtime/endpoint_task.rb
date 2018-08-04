@@ -7,7 +7,7 @@ module Fcoin
       # Subscribe to ticker information
       #
       # @example Subscribe to ticker information of ethusdt
-      #  ./bin/fcoin subscribe ticker --symbol ethusdt
+      #  ./exe/fcoin subscribe ticker --symbol ethusdt
       #
       #
       # @see https://developer.fcoin.com/zh.html#ticker
@@ -17,13 +17,13 @@ module Fcoin
       desc 'ticker', 'Subscribe to ticker information'
       option :symbol, type: :string, required: true, desc: 'Transaction pair'
       def ticker
-        # @see bin/fcoin
+        # @see exe/fcoin
       end
 
       # Subscribe to depth information
       #
       # @example Subscribe to depth information of ethusdt specified by L20 level
-      #  ./bin/fcoin subscribe depth --symbol ethusdt --level L20
+      #  ./exe/fcoin subscribe depth --symbol ethusdt --level L20
       #
       #
       # @see https://developer.fcoin.com/zh.html#50f4407ea4
@@ -36,13 +36,13 @@ module Fcoin
       option :symbol, type: :string, required: true, desc: 'Transaction pair'
       option :level,  type: :string, required: true, desc: 'Level of depth chart. level must be included in [L20, L40, full]'
       def depth
-        # @see bin/fcoin
+        # @see exe/fcoin
       end
 
       # Subscribe to trade information
       #
       # @example Subscribe to trade information of ethusdt limit 5
-      #  ./bin/fcoin subscribe trade --symbol ethusdt --limit 5
+      #  ./exe/fcoin subscribe trade --symbol ethusdt --limit 5
       #
       #
       # @see https://developer.fcoin.com/zh.html#6477a1394e
@@ -55,13 +55,13 @@ module Fcoin
       option :symbol, type: :string, required: true, desc: 'Transaction pair'
       option :limit,  type: :numeric, default: 20
       def trade
-        # @see bin/fcoin
+        # @see exe/fcoin
       end
 
       # Subscribe to candle information
       #
       # @example Subscribe to candle information of ethusdt limit 5
-      #  ./bin/fcoin subscribe candle --symbol ethusdt --resolution MN --limit 5
+      #  ./exe/fcoin subscribe candle --symbol ethusdt --resolution MN --limit 5
       #
       #
       # @see https://developer.fcoin.com/zh.html#candle
@@ -76,31 +76,31 @@ module Fcoin
       option :resolution, type: :string, required: true, desc: 'period of candles chart. resolution must be included in [M1, M3, M5, M15, M30, H1, H4, H6, D1, W1, MN]'
       option :limit,      type: :numeric, default: 20
       def candle
-        # @see bin/fcoin
+        # @see exe/fcoin
       end
 
       # Subscribe to topics
       #
       # @example Subscribe to topics
-      #  ./bin/fcoin subscribe topics
+      #  ./exe/fcoin subscribe topics
       #
       #
       # @yieldreturn Process block arguments
       desc 'topics', 'Subscribe to topics'
       def topics
-        # @see bin/fcoin
+        # @see exe/fcoin
       end
 
       # Subscribe to server time
       #
       # @example Subscribe to Subscribe to server time
-      #  ./bin/fcoin subscribe hello
+      #  ./exe/fcoin subscribe hello
       #
       #
       # @yieldreturn Process block arguments
       desc 'hello', 'Subscribe to server time'
       def hello
-        # @see bin/fcoin
+        # @see exe/fcoin
       end
     end
   end

@@ -13,7 +13,7 @@ module Fcoin
       # @example Create an order to sell 0.010eth at a price of 1000usdt.
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin order create_limit --symbol ethusdt --side sell --price 1000 --amount 0.001
+      #  ./exe/fcoin order create_limit --symbol ethusdt --side sell --price 1000 --amount 0.001
       #
       #
       # @see https://developer.fcoin.com/zh.html#4a3e521c3b
@@ -48,7 +48,7 @@ module Fcoin
       # @example get the canceled　order list of ethusdt limit 20 per page.
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin order_list --symbol ethusdt, --states canceled --per_page 20
+      #  ./exe/fcoin order_list --symbol ethusdt, --states canceled --per_page 20
       #
       #
       # @see https://developer.fcoin.com/zh.html#9094989d10
@@ -84,7 +84,7 @@ module Fcoin
       # @example query order specified by order_id.
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin order --order_id L7rbALEIoI0ymo3uOXBF4gT4Bl********jvptIv2U=
+      #  ./exe/fcoin order --order_id L7rbALEIoI0ymo3uOXBF4gT4Bl********jvptIv2U=
       #
       #
       # @see https://developer.fcoin.com/zh.html#5faf03be01
@@ -107,7 +107,7 @@ module Fcoin
       # @example cancel order specified by order_id.
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin cancel_order --order_id nMEC_VrW0LYlP4iCcWzmdL50jFrvNWZoaQxvZSjeUSA=
+      #  ./exe/fcoin cancel_order --order_id nMEC_VrW0LYlP4iCcWzmdL50jFrvNWZoaQxvZSjeUSA=
       #
       #
       # @see https://developer.fcoin.com/zh.html#299126e3bf
@@ -130,7 +130,7 @@ module Fcoin
       # @example Query the transaction record for the specified by order_id.
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin order_transaction --order_id kW3cRiXIGHG-cHNdter*********qfoMzbeHEQcqp4=
+      #  ./exe/fcoin order_transaction --order_id kW3cRiXIGHG-cHNdter*********qfoMzbeHEQcqp4=
       #
       #
       # @see https://developer.fcoin.com/zh.html#152112dfd6
@@ -157,7 +157,7 @@ module Fcoin
       # @example Create an order to sell 0.010eth at a price of 1000usdt.
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin order create_market --symbol ethusdt --side sell  --amount 0.001
+      #  ./exe/fcoin order create_market --symbol ethusdt --side sell  --amount 0.001
       #
       #
       # @see https://developer.fcoin.com/zh.html#4a3e521c3b

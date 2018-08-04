@@ -9,7 +9,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/public/server-time
       #
       # @example get server time
-      #  ./bin/fcoin public server_time #=> {"status":0,"data":1531562028166}
+      #  ./exe/fcoin public server_time #=> {"status":0,"data":1531562028166}
       #
       #
       # @see https://developer.fcoin.com/zh.html#8aa898cda7
@@ -24,7 +24,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/public/currencies
       #
       # @example Display available currency
-      #  ./bin/fcoin public currencies
+      #  ./exe/fcoin public currencies
       #
       #
       # @see https://developer.fcoin.com/zh.html#0fd2e492e6
@@ -39,7 +39,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/public/symbols
       #
       # @example Query available transaction pairs
-      #  ./bin/fcoin public symbols
+      #  ./exe/fcoin public symbols
       #
       #
       # @see https://developer.fcoin.com/zh.html#a266e284f4

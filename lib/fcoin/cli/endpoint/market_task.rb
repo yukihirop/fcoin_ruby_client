@@ -9,7 +9,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/market/ticker/$symbol
       #
       # @example get ethusdt ticker info
-      #  ./bin/fcoin market ticker --symbol ethusdt
+      #  ./exe/fcoin market ticker --symbol ethusdt
       #
       #
       # @see https://developer.fcoin.com/zh.html#ticker
@@ -28,7 +28,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/market/depth/$level/$symbol
       #
       # @example get ethusdt depth info specified by L20 level.
-      #  ./bin/fcoin market depth --symbol ethusdt --level L20
+      #  ./exe/fcoin market depth --symbol ethusdt --level L20
       #
       #
       # @see https://developer.fcoin.com/zh.html#50f4407ea4
@@ -51,7 +51,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/market/trades/$symbol
       #
       # @example get ethusdt trades info.
-      #  ./bin/fcoin market trades --symbol ethusdt
+      #  ./exe/fcoin market trades --symbol ethusdt
       #
       #
       # @see https://developer.fcoin.com/zh.html#6477a1394e
@@ -70,7 +70,7 @@ module Fcoin
       # curl: GET https://api.fcoin.com/v2/market/candles/$resolution/$symbol
       #
       # @example get monthly(MN) ethusdt candles info.
-      #  ./bin/fcoin market candles --symbol ethusdt --resolution D1
+      #  ./exe/fcoin market candles --symbol ethusdt --resolution D1
       #
       #
       # @see https://developer.fcoin.com/zh.html#candle
