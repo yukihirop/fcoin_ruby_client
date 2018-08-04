@@ -25,6 +25,8 @@ Or install it yourself as:
     $ gem install fcoin_ruby_client
 
 ## Usage
+Please use only those who can agree with [the following decration](#Declaration)
+
 Configure default settings.
 You can use all API at least by setting `api_key` and `secret_key` .
 Because `api_key` and `secret_key` are confidential information,
@@ -185,6 +187,13 @@ $ export FCOIN_SECRET_KEY='your fcoin secret key'
 $ bundle exec rspec --tag fcoin_auth
 
 ```
+
+## License
+The gem is available as open source under the terms of the MIT License.
+
+## Declaration
+The author is not responsible for any damage caused by using this gem.
+Please use at your own risk.
 
 ## Contributing
 
