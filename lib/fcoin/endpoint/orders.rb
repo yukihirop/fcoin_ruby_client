@@ -6,7 +6,7 @@ module Fcoin
   module Endpoint
     module Orders
       include Utility
-      # Create order.
+      # Create limit order.
       #
       # curl: POST https://api.fcoin.com/v2/orders
       #
@@ -14,7 +14,7 @@ module Fcoin
       #
       # @example Create an order to sell 0.010eth at a price of 1000usdt.
       #  client = Fcoin::Client.new(api_key: ENV['FCOIN_API_KEY'], secret_key: ENV['FCOIN_SECRET_KEY'])
-      #  puts client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) #=> {"status":0,"data":"R0moy92q4Qaf_G*********wwJM2bz_Zyacp-Ek8="}'
+      #  puts client.create_order_limit(symbol: :ethusdt, side: :sell, price: 1000, amount: 0.001) #=> {"status":0,"data":"R0moy92q4Qaf_G*********wwJM2bz_Zyacp-Ek8="}'
       #
       #
       # @see https://developer.fcoin.com/zh.html#4a3e521c3b
@@ -26,8 +26,8 @@ module Fcoin
       # @param price [Float]
       # @param amount [Float]
       # @return [Hash or JSON] Returns receipt contains order_id.
-      def create_order(symbol:, side:, type:, price:, amount:)
-        payload = { symbol: symbol, side: side, type: type, price: price, amount: amount }
+      def create_order_limit(symbol:, side:, price:, amount:)
+        payload = { symbol: symbol, side: side, type: :limit, price: price, amount: amount }
         validator = Fcoin::Validator.new(payload.merge(method_name: __method__))
         if skip_validation || validator.valid?
           valid_payload = sort_payload(payload)
@@ -126,6 +126,46 @@ module Fcoin
         get("orders/#{order_id}/match-results")
       end
       alias :order_transaction :order_match_results
+
+      private
+
+      # TODO: After checking the operation, go to the public
+      #
+      # Create market order.
+      #
+      # curl: POST https://api.fcoin.com/v2/orders
+      #
+      # @note This method can not be invoked without authentication.
+      #
+      # @example Create an order to sell 0.010eth at a price of 1000usdt.
+      #  client = Fcoin::Client.new(api_key: ENV['FCOIN_API_KEY'], secret_key: ENV['FCOIN_SECRET_KEY'])
+      #  puts client.create_order_market(symbol: :ethusdt, side: :buy, total: 1)
+      #
+      #
+      # @see https://developer.fcoin.com/zh.html#4a3e521c3b
+      # @raise [ArgumentError] If the symbol or side or type or price or amount does not have.
+      # @raise [InvalidValueError] If symbol or side or type or price or amount is invalid.
+      # @param symbol [String or Symbol] Transaction of pair
+      # @param side [String or Symbol] Direction of the transaction
+      # @param total [Float]
+      # @param amount [Float]
+      # @return [Hash or JSON] Returns receipt contains order_id.
+      def create_order_market(symbol:, side:, total: nil, amount: nil)
+        base_payload = { symbol: symbol, side: side, type: :market }
+        payload = case side.to_sym
+                  when :sell
+                    base_payload.merge(amount: amount)
+                  when :buy
+                    base_payload.merge(amount: total)
+                  end
+        validator = Fcoin::Validator.new(payload.merge(method_name: __method__))
+        if skip_validation || validator.valid?
+          valid_payload = sort_payload(payload)
+          post('orders', true, valid_payload)
+        else
+          raise InvalidValueError.new(validator.messages)
+        end
+      end
     end
   end
 end

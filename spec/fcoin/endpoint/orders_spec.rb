@@ -3,21 +3,21 @@ require 'spec_helper'
 RSpec.describe Fcoin::Endpoint::Orders do
   let(:client) { Fcoin::Client.new }
 
-  describe '#create_order' do
+  describe '#create_order_limit' do
     context 'when client is authorized', fcoin_auth: true do
-      context 'when input correct', vcr: { cassette_name: 'orders/create_order_auth', record: :new_episodes } do
-        let(:body)  { client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) }
+      context 'when input correct', vcr: { cassette_name: 'orders/create_order_limit_auth', record: :new_episodes } do
+        let(:body)  { client.create_order_limit(symbol: :ftusdt, side: :sell, price: 10, amount: 3) }
 
         it 'response data should be got' do
           # order_id
-          expect(body['data']).to   eq "R0moy92q4Qaf_GDEQ6Y1IKCgl5wwJM2bz_Zyacp-Ek8="
+          expect(body['data']).to   eq "bBuPgVpi7CmX9bvNVVwWl7dUrW5E3LToYqhCKislqxI="
           expect(body['status']).to eq 0
         end
       end
 
-      context 'when input incorrect', vcr: { cassette_name: 'orders/create_order_auth_incorrect', record: :new_episodes } do
+      context 'when input incorrect', vcr: { cassette_name: 'orders/create_order_limit_auth_incorrect', record: :new_episodes } do
         context 'when symbol is not valid' do
-          let(:body)  { client.create_order(symbol: :ftft, side: :sell, type: :limit, price: 10, amount: 10) }
+          let(:body)  { client.create_order_limit(symbol: :ftft, side: :sell, price: 10, amount: 10) }
 
           it 'should return error message' do
             expect(body['msg']).to    eq "invalid symbol: ftft"
@@ -26,12 +26,12 @@ RSpec.describe Fcoin::Endpoint::Orders do
         end
 
         context 'when side and type and amount is not valid' do
-          subject { client.create_order(symbol: :ethusdt, side: :invalid_side, type: :invalid_limit, price: 1000, amount: 0.0001) }
+          subject { client.create_order_limit(symbol: :ethusdt, side: :invalid_side, price: 1000, amount: 0.0001) }
           it 'should be raise error' do
-            expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:type=>"type is invalid_limit. type is not included in the [limit, market]."}')
+            expect { subject }.to raise_error(Fcoin::InvalidValueError, '{:side=>"side is invalid_side. side is not included in the [buy, sell]."}')
           end
 
-          context 'when skip validation' , vcr: { cassette_name: 'orders/create_order_auth_incorrect_skip_validation', record: :new_episodes } do
+          context 'when skip validation' , vcr: { cassette_name: 'orders/create_order_limit_auth_incorrect_skip_validation', record: :new_episodes } do
             let(:body) { subject }
             before { allow(client).to receive(:skip_validation).and_return(true) }
 
@@ -44,21 +44,47 @@ RSpec.describe Fcoin::Endpoint::Orders do
       end
 
       context 'when params is missing' do
-        subject { client.create_order }
+        subject { client.create_order_limit }
         it 'should raise error' do
-          expect { subject }.to raise_error(ArgumentError, "missing keywords: symbol, side, type, price, amount")
+          expect { subject }.to raise_error(ArgumentError, "missing keywords: symbol, side, price, amount")
         end
       end
     end
 
-    context 'when client is not authorized', vcr: { cassette_name: 'orders/create_order_not_auth', record: :new_episodes } do
-      let(:body)  { client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001) }
+    context 'when client is not authorized', vcr: { cassette_name: 'orders/create_order_limit_not_auth', record: :new_episodes } do
+      let(:body)  { client.create_order_limit(symbol: :ethusdt, side: :sell, price: 1000, amount: 0.001) }
       
       it 'should return error message' do
         expect(body['msg']).to    eq "api key check fail : {\"status\":1020,\"msg\":\"api key not found : Fcoin API Public Key\"}"
         expect(body['status']).to eq 6005
       end
     end
+  end
+
+  xdescribe '#create_order_market' do
+    context 'when client is authorized', fcoin_auth: true do
+      context 'when input correct', vcr: { cassette_name: 'orders/create_order_market_auth', record: :new_episodes } do
+        context 'when sell' do
+          let(:body)  { client.create_order_market(symbol: :btcusdt, side: :sell, amount: 0.001) }
+
+          it 'response data should be got' do
+            pending
+            # TODO: don't check the operation because I have not sufficient money.
+          end
+        end
+
+        context 'when buy' do
+          let(:body) { client.create_order_market(symbol: :ftusdt, side: :buy, total: 5) }
+
+          it 'response data should be got' do
+            pending
+            # TODO: don't check the operation because I have not sufficient money.
+          end
+        end
+      end
+      # abridgement
+    end
+    # abridgement
   end
 
   describe '#order_list', fcoin_auth: true, vcr: { cassette_name: 'orders/order_list_auth', record: :new_episodes } do
