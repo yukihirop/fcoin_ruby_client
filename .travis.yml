@@ -21,5 +21,6 @@ install:
   - bundle install
 
 script:
+  - bundle exec rubocop --fail-level=W
   - bundle exec rspec spec
   - bundle exec rspec spec --tag fcoin_auth
