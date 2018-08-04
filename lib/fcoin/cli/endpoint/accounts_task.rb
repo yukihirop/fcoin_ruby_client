@@ -13,7 +13,7 @@ module Fcoin
       # @example get account info
       #  export FCOIN_API_KEY='your_fcoin_api_key'
       #  export FCOIN_SECRET_KEY='your_fcoin_secret_key'
-      #  ./bin/fcoin accounts balance
+      #  ./exe/fcoin accounts balance
       #
       #
       # @see https://developer.fcoin.com/zh.html#486f6037ed

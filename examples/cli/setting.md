@@ -1,11 +1,11 @@
 # Setting CLI
 
-In development, please use the `./bin/fcoin`.<br>
+In development, please use the `./exe/fcoin`.<br>
 In Actual, please use the `bundle exec fcoin`.
 
 ## All
 ```bash
-$ ./bin/fcoin
+$ ./exe/fcoin
 Commands:
   fcoin account         # Get Account Information
   fcoin help [COMMAND]  # Describe available commands or one specific command
@@ -22,7 +22,7 @@ Commands:
 ## Validation
 ```bash
 $ # Create validation setting file
-$ ./bin/fcoin validation init --path ./config
+$ ./exe/fcoin validation init --path ./config
       create
       create  my_settings.yml
 ```
@@ -30,7 +30,7 @@ $ ./bin/fcoin validation init --path ./config
 ## Locale
 ```bash
 $ # Create locale file
-$ ./bin/fcoin locale init --path ./config
+$ ./exe/fcoin locale init --path ./config
        exist
       create  .DS_Store
       create  locales/en.yml

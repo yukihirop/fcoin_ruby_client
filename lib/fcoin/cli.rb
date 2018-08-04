@@ -12,7 +12,7 @@ module Fcoin
     # Create validation setting file
     #
     # @example Create validation setting file in ./config
-    #  ./bin/fcoin validation init --path ./config
+    #  ./exe/fcoin validation init --path ./config
     #     create
     #     create  my_settings.yml
     #
@@ -32,7 +32,7 @@ module Fcoin
     # Create locale file. For example, use in rails project and so on.
     #
     # @example Create locale file in ./config
-    #  ./bin/fcoin locale init --path ./config
+    #  ./exe/fcoin locale init --path ./config
     #     exist
     #    create  .DS_Store
     #    create  locales/en.yml
@@ -54,7 +54,7 @@ module Fcoin
     # Print Version
     #
     # @example Print current version
-    #  ./bin/fcoin version
+    #  ./exe/fcoin version
     #  fconi_ruby_client v0.1.0
     desc 'version', 'Print Version'
     def version
