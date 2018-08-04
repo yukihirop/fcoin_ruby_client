@@ -49,7 +49,9 @@ If you want to see more usage, please see [examples](https://github.com/yukihiro
 write how to use WebSocket API.
 
 ## CLI
-We have two client commands.
+We also prepare configuration files and provide CLI commands to execute API.
+Describe the CLI command for preparing the setting file.
+See [CLI example](https://github.com/yukihirop/fcoin_ruby_client/tree/master/examples/cli) for the CLI command to execute the API.
 
 - `bundle exec fcoin validation init --path ./config`
 
@@ -62,7 +64,7 @@ We have two client commands.
   For example, use in rails project.
 
 
-If you want to know setting file is generated, please see [config](https://github.com/yukihirop/fcoin_ruby_client/tree/master/lib/fcoin/config)
+If you want to know setting file, please see [config](https://github.com/yukihirop/fcoin_ruby_client/tree/master/lib/fcoin/config)
 
 ## Authorization
 There are two authentication methods as follows.
@@ -118,8 +120,6 @@ We present some cases.
 
 - case 1: If you wan't to be able to `buy(limit)` on `ethusdt` board (Mainboard A) in `1000 or more amount` and `1000usdt or more price`.
 - case 2: If you wan't to be able to `sell(limit)` on `ftusdt` board (Mainboard B) in `1000 or more amount` and `0.01usdt or more price`.
-- case 3: If you wan't to be able to `buy(market)` on `ethusdt` board (Mainbord A) in `1000 or more amount`.
-- case 4: If you wan't to be able to `sell(market)` on `ftusdt` board (Mainboard B).
 
 #### case 1
 If you wan't to be able to `buy(limit)` on `ethusdt` board (Mainboard A) in `1000 or more amount` and `1000usdt or more price`.
@@ -143,31 +143,6 @@ fcoin:
       sell:
         mainboard_B:
 +         - { symbol: 'ftusdt', amount: { min: 0, max: 1000 }, price: { min: 0, max: 0.01 } }
-```
-
-#### case 3
-If you wan't to be able to `buy(market)` on `ethusdt` board (Mainbord A) in `1000 or more amount`.
-
-```diff
-fcoin:
-  validation:
-    market:
-      valid:
-        sell:
-          mainboard_A:
-+           - { symbol: 'ftusdt', amount: { min: 0, max: 1000 } }
-```
-
-#### case 4
-If you wan't to be able to `sell(market)` on `ftusdt` board (Mainboard B).
-
-```diff
-fcoin:
-  validation:
-    market:
-      invalid:
-        mainboard_B:
-+         - ftusdt
 ```
 
 Of course you can also set for `GPM` currencies.
