@@ -2,4 +2,94 @@
 
 require 'bundler/setup'
 require 'fcoin'
-Fcoin::CLI.start
+
+Fcoin.configure do |config|
+  config.api_key                 = ENV['FCOIN_API_KEY']
+  config.secret_key              = ENV['FCOIN_SECRET_KEY']
+  config.skip_validation         = ENV['VALIDATION_SETTING_PATH'].nil?
+  config.validation_setting_path = ENV['VALIDATION_SETTING_PATH']
+  config.format_type             = :json
+end
+
+# Since `Fcoin::CLI.start` and `client.subscribe` can not be executed on the same thread.
+class FcoinCLI
+  class << self
+    def start
+      case
+      when show_subscribe_command?
+        Fcoin::CLI.start
+      when subscribe?
+        subscribe
+      else
+        Fcoin::CLI.start
+      end
+    end
+
+    private
+
+    def subscribe
+      params = parsed_argv.dup
+      block = Proc.new { |data| STDOUT.puts data }
+      case params[:topic]
+      when /ticker/
+        client.on_ticker(symbol: params[:symbol], &block)
+      when /depth/
+        client.on_depth(symbol: params[:symbol], level: params[:level], &block)
+      when /trade/
+        client.on_trade(symbol: params[:symbol], limit: params[:limit], &block)
+      when /candle/
+        client.on_candle(symbol: params[:symbol], resolution: params[:resolution], limit: params[:limit], &block)
+      when /topics/
+        client.on_topics(&block)
+      when /hello/
+        client.on_hello(&block)
+      end
+      client.subscribe
+    end
+
+    def parsed_argv
+      data = %w(subcom topic symbol level resolution limit).zip(Array.new(6)).to_h
+      ARGV.each_with_index do |argv, index|
+        case adjusted(argv)
+        when /subscribe/
+          data[:subcom]     = argv
+        when /ticker|depth|trade|candle|topics|hello/
+          data[:topic]      = argv
+        when /symbol/
+          data[:symbol]     = ARGV[index + 1]
+        when /level/
+          data[:level]      = ARGV[index + 1]
+        when /resolution/
+          data[:resolution] = ARGV[index + 1]
+        when /limit/
+          data[:limit]      = ARGV[index + 1]
+        else
+          next
+        end
+      end
+      data
+    end
+
+    def subscribe?
+      subcom = ARGV.first
+      subcom == 'subscribe'
+    end
+
+    def show_subscribe_command?
+      subcom = ARGV.last
+      subcom == 'subscribe'
+    end
+
+    def adjusted(argv)
+      argv.gsub('-','')
+    end
+
+    def client
+      # In order to avoid the silent of validation error, skip_validation must be false
+      @client ||= Fcoin::RealTime::Client.new(skip_validation: false)
+    end
+  end
+end
+
+# Instead of `Fcoin::CLI.start`
+FcoinCLI.start
