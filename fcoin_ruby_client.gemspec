@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{A Ruby wrapper for Fcoin API}
   spec.description   = %q{A Ruby wrapper for Fcoin API}
+  spec.license       = "MIT".freeze
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -17,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.1p111".freeze)
 
   spec.add_development_dependency "bundler", "~> 1.16.a"
   spec.add_development_dependency "rake", "~> 10.0"
