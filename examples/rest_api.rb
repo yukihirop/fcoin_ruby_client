@@ -31,7 +31,7 @@ puts client.accounts_balance
 
 
 ## orders
-# client.create_order(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001)
+# client.create_order_limit(symbol: :ethusdt, side: :sell, type: :limit, price: 1000, amount: 0.001)
 puts client.order_list(symbol: :ethusdt, states: :canceled, page_before: nil, page_after: nil, per_page: 20)
 # puts client.order_list(symbol: :ethusdt, states: 'canceled', page_before: nil, page_after: nil, per_page: 20)
 
