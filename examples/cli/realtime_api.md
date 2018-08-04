@@ -1,5 +1,8 @@
 # RealTime API CLI
 
+In development, please use the `./bin/fcoin`.<br>
+In Actual, please use the `bundle exec fcoin`.
+
 ## All
 ```
 $ ./bin/fcoin
