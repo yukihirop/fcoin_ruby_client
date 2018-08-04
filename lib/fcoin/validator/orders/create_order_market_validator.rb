@@ -9,11 +9,12 @@ module Fcoin
       # @param params [Hash] Parameter you want to verify including the called method name
       # @option params :symbol [String or Symbol] Transaction pair
       # @option params :side [String or Symbol] Direction of the transaction
+      # @option params :total [Float]
       # @option params :amount [Float]
-      # @option params :states [String] Order state
       def initialize(params)
         self.symbol      = params[:symbol]
         self.side        = params[:side]
+        self.total       = params[:amount] # this is not a mistake
         self.amount      = params[:amount]
       end
 
@@ -21,7 +22,12 @@ module Fcoin
       def valid?
         case
         when valid_symbol_setting_exist?
-          valid_amount?
+          case
+          when sell?
+            valid_amount?
+          when buy?
+            valid_total?
+          end
         when invalid_symbol_setting_exist?
           false
         else
@@ -38,7 +44,12 @@ module Fcoin
 
         case
         when valid_symbol_setting_exist?
-          results << between_error_message(amount, :amount, min(:amount), max(:amount)) unless valid_amount?
+          case
+          when sell?
+            results << between_error_message(amount, :amount, min(:amount), max(:amount)) unless valid_amount?
+          when buy?
+            results << between_error_message(total, :total, min(:total), max(:total)) unless valid_total?
+          end
         when invalid_symbol_setting_exist?
           results << invalid_create_order_market_error_message(symbol, :symbol)
         end
@@ -46,6 +57,14 @@ module Fcoin
       end
 
       private
+
+      def sell?
+        side.to_s == 'sell'
+      end
+
+      def buy?
+        side.to_s == 'buy'
+      end
 
       def invalid_create_order_market_error_message(value, type)
         message = {}

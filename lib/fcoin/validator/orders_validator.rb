@@ -1,4 +1,5 @@
-require_relative 'orders/create_order_validator'
+require_relative 'orders/create_order_limit_validator'
+require_relative 'orders/create_order_market_validator'
 require_relative 'orders/order_list_validator'
 
 module Fcoin
@@ -18,6 +19,7 @@ module Fcoin
       self.type        = params[:type]
       self.price       = params[:price]
       self.amount      = params[:amount]
+      self.total       = params[:total]
       self.states      = params[:states]
       self.method_name = params[:method_name]
     end
@@ -37,12 +39,14 @@ module Fcoin
 
     private
 
-    attr_accessor :symbol, :side, :type, :price, :amount, :states, :method_name
+    attr_accessor :symbol, :side, :type, :price, :total, :amount, :states, :method_name
 
     def validator
       case method_name.to_sym
-      when :create_order
-        create_order_validator
+      when :create_order_limit
+        create_order_limit_validator
+      when :create_order_market
+        create_order_market_validator
       when :order_list
         order_list_validator
       else
@@ -50,8 +54,12 @@ module Fcoin
       end
     end
 
-    def create_order_validator
-      @create_order_validator ||= Orders::CreateOrderValidator.new(symbol: symbol, side: side, type: type, price: price, amount: amount)
+    def create_order_limit_validator
+      @create_order_limit_validator ||= Orders::CreateOrderLimitValidator.new(symbol: symbol, side: side, price: price, amount: amount)
+    end
+
+    def create_order_market_validator
+      @create_order_market_validator ||= Orders::CreateOrderMarketValidator.new(symbol: symbol, side: side, total: total, amount: amount)
     end
 
     def order_list_validator
